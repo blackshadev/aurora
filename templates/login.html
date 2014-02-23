@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+{{super()}}
+<style type="text/css">
+#container {
+    position: absolute;
+    top: 30%;
+    width: 100%;
+}
+#loginPanel {
+    position: relative;
+    margin: 0 auto 0 auto;
+    width: 750px;
+}
+#errLabel { color: #ff0000;}
+</style>
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block scriptInit %}
+aur.noLogin = true;
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+
+<script type="text/javascript">
+
+if(typeof(Storage) !== "undefined") {
+  aur.authenticate(undefined, function() {//success
+    //window.location.href = "/";
+  });
+}
+
+$('#loginForm').submit(function(e) {
+    e.preventDefault();
+    var fData = $(this).serializeObject();
+
+    aur.login(fData, function() { // error
+      $("#errLabel").text("Login failed, try again.");
+    }, function() { // succeed
+      window.location.href = "/";
+    });
+
+});
+</script>
+{% endblock %}
+
+{% block content %}
+{{super()}}
+<div id="container">
+<div id="loginPanel" class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Authenticate</h3>
+  </div>
+  <div class="panel-body">
+    <form id="loginForm" class="form-horizontal" role="form">
+      <div class="form-group">
+        <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="username" placeholder="Username">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" name="pass" placeholder="Password">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label>
+              <input name="remember" type="checkbox" checked> Remember me
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+           <p class="help-block" id="errLabel"></p>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</div>
+
+{% endblock %}

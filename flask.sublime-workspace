@@ -1,0 +1,1861 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"dodr",
+				"doDrag"
+			],
+			[
+				"doD",
+				"doDragStart"
+			],
+			[
+				"xy",
+				"XYPicker"
+			],
+			[
+				"prot",
+				"proto	Prototype"
+			],
+			[
+				"dra",
+				"dragging"
+			],
+			[
+				"icon",
+				"iconOn"
+			],
+			[
+				"ref",
+				"refrFn"
+			],
+			[
+				"proto",
+				"prototype"
+			],
+			[
+				"to",
+				"toRgb"
+			],
+			[
+				"given",
+				"given_sign"
+			],
+			[
+				"secr",
+				"secretStr"
+			],
+			[
+				"no",
+				"no_sign_required"
+			],
+			[
+				"validate",
+				"validateData"
+			],
+			[
+				"sess",
+				"sessionDestroyed"
+			],
+			[
+				"se",
+				"sessionDestroyed"
+			],
+			[
+				"Aurora",
+				"Aurora_Secret"
+			],
+			[
+				"from",
+				"fromRecord"
+			],
+			[
+				"giv",
+				"given_sign"
+			],
+			[
+				"blue",
+				"blueprint"
+			],
+			[
+				"login",
+				"login_required"
+			],
+			[
+				"Au",
+				"Aurora_Session"
+			],
+			[
+				"__",
+				"__dict__"
+			],
+			[
+				"ses",
+				"sessionid"
+			],
+			[
+				"uid",
+				"uuid"
+			],
+			[
+				"draw",
+				"drawCursor  (function)"
+			],
+			[
+				"stroke",
+				"strokeStyle"
+			],
+			[
+				"default",
+				"defaultCursor"
+			],
+			[
+				"slider",
+				"sliderHeight"
+			],
+			[
+				"dim",
+				"spaceDim"
+			],
+			[
+				"XY",
+				"XYPicker"
+			],
+			[
+				"isset",
+				"is_set  (variable)"
+			],
+			[
+				"Web",
+				"WebSocketHandler"
+			],
+			[
+				"Simp",
+				"SimpleWebSocketServer  (class)"
+			],
+			[
+				"h",
+				"huesocket  (module)"
+			],
+			[
+				"We",
+				"WebSocketHandler"
+			],
+			[
+				"ligh",
+				"lightsChanged"
+			],
+			[
+				"start",
+				"start_new_thread  (function)"
+			],
+			[
+				"get",
+				"getAllData"
+			],
+			[
+				"stop",
+				"stopImmediatePropagation"
+			],
+			[
+				"colo",
+				"colorpicker"
+			],
+			[
+				"err",
+				"errFn"
+			],
+			[
+				"set",
+				"setLightState"
+			],
+			[
+				"Res",
+				"Response"
+			],
+			[
+				"s",
+				"syncTime  (variable)"
+			],
+			[
+				"li",
+				"lights"
+			],
+			[
+				"t",
+				"setTimeout  (function)"
+			],
+			[
+				"clear",
+				"clearTimeout  (function)"
+			],
+			[
+				"repla",
+				"replaceWith	replaceWith"
+			],
+			[
+				"lights",
+				"lightsTable"
+			],
+			[
+				"table",
+				"tableContent"
+			],
+			[
+				"aL",
+				"aLightsFull"
+			],
+			[
+				"config",
+				"configRaw  (variable)"
+			],
+			[
+				"Con",
+				"ConfigSection"
+			],
+			[
+				"re",
+				"resposeType"
+			],
+			[
+				"HTT",
+				"HTTPConnection  (class)"
+			],
+			[
+				"param",
+				"param_label"
+			],
+			[
+				"la",
+				"param_label"
+			],
+			[
+				"device",
+				"devicesid"
+			],
+			[
+				"user",
+				"userid"
+			],
+			[
+				"anim",
+				"animateSpeed"
+			],
+			[
+				"entr",
+				"entries"
+			],
+			[
+				"kl",
+				"klnmmr"
+			],
+			[
+				"job",
+				"jobNum"
+			],
+			[
+				"prime",
+				"primePerSec"
+			],
+			[
+				"out",
+				"outTime"
+			],
+			[
+				"pri",
+				"primePerSec"
+			],
+			[
+				"el",
+				"elapsed"
+			],
+			[
+				"bin",
+				"binarySearch"
+			],
+			[
+				"wo",
+				"worker"
+			],
+			[
+				"sen",
+				"sendedData  (variable)"
+			],
+			[
+				"nu",
+				"nextNum"
+			],
+			[
+				"send",
+				"sendedData"
+			],
+			[
+				"worker",
+				"workerStruct"
+			],
+			[
+				"histo",
+				"histogramIntersectMatchValue"
+			],
+			[
+				"htm",
+				"htmlspecialchars"
+			],
+			[
+				"__ec",
+				"__echoWaves  (variable)"
+			],
+			[
+				"transform",
+				"transformPoint"
+			],
+			[
+				"stat",
+				"staticmethod	staticmethod"
+			],
+			[
+				"__echo",
+				"__echoSeq"
+			],
+			[
+				"__e",
+				"__echoValues  (variable)"
+			],
+			[
+				"__ech",
+				"__echoValues  (variable)"
+			],
+			[
+				"echo",
+				"__echoValues  (variable)"
+			],
+			[
+				"calcu",
+				"calculation"
+			],
+			[
+				"po",
+				"position  (variable)"
+			],
+			[
+				"neighbours",
+				"__neighbours"
+			],
+			[
+				"seq",
+				"sequence"
+			],
+			[
+				"echoR",
+				"echo_recieve"
+			],
+			[
+				"message",
+				"message_encode"
+			],
+			[
+				"pin",
+				"pingTime  (variable)"
+			],
+			[
+				"write",
+				"writeln  (function)"
+			],
+			[
+				"__best",
+				"__best_inliers  (variable)"
+			],
+			[
+				"convolve",
+				"convolve1d"
+			],
+			[
+				"gauss",
+				"gauss1d"
+			],
+			[
+				"sci",
+				"scipy  (module)"
+			],
+			[
+				"sc",
+				"scipy  (module)"
+			],
+			[
+				"wri",
+				"writeln  (function)"
+			],
+			[
+				"Key",
+				"KeyboardInterrupt  (class)"
+			],
+			[
+				"ex",
+				"except	keyword"
+			],
+			[
+				"userN",
+				"userNameMap  (variable)"
+			],
+			[
+				"wr",
+				"writeln  (function)"
+			],
+			[
+				"co",
+				"commandDict  (variable)"
+			],
+			[
+				"inp",
+				"input	input"
+			],
+			[
+				"sm",
+				"smtpComm  (function)"
+			],
+			[
+				"exp",
+				"expectedCode"
+			],
+			[
+				"Clien",
+				"ClientConnection"
+			],
+			[
+				"reques",
+				"requestUri"
+			],
+			[
+				"en",
+				"environ"
+			],
+			[
+				"html",
+				"public_html_path"
+			],
+			[
+				"file",
+				"fileContent  (variable)"
+			],
+			[
+				"cg",
+				"cgi_bin_request"
+			],
+			[
+				"cgi",
+				"cgi_bin_path"
+			],
+			[
+				"fi",
+				"fileLength  (variable)"
+			],
+			[
+				"O_R",
+				"O_RDONLY  (variable)"
+			],
+			[
+				"mim",
+				"mimetypes"
+			],
+			[
+				"p",
+				"pubHtml  (variable)"
+			],
+			[
+				"stt",
+				"statusCode  (variable)"
+			],
+			[
+				"S",
+				"SHUT_RDWR  (variable)"
+			],
+			[
+				"publ",
+				"pubHtml"
+			],
+			[
+				"SOCK_S",
+				"SOCK_STREAM  (variable)"
+			],
+			[
+				"read",
+				"readStream"
+			],
+			[
+				"cons",
+				"constructor  (variable)"
+			],
+			[
+				"con",
+				"constructor  (variable)"
+			],
+			[
+				"parse",
+				"parseFileCache"
+			],
+			[
+				"full",
+				"fullName"
+			],
+			[
+				"compre",
+				"compressedFile"
+			],
+			[
+				"compress",
+				"compressedFile"
+			],
+			[
+				"accep",
+				"acceptEncoding"
+			],
+			[
+				"encode",
+				"encodeType"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "static/colorPicker.js",
+			"settings":
+			{
+				"buffer_size": 9247,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "db/users.sql",
+			"settings":
+			{
+				"buffer_size": 544,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "db/colors.sql",
+			"settings":
+			{
+				"buffer_size": 216,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/Vincent/Downloads/SoundSwitch.application",
+			"settings":
+			{
+				"buffer_size": 2053,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "static/colorPickers.js",
+			"settings":
+			{
+				"buffer_size": 3501,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/lights.html",
+			"settings":
+			{
+				"buffer_size": 5461,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 375.0,
+		"selected_items":
+		[
+			[
+				"js",
+				"JSHint"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"j",
+				"JSHint"
+			],
+			[
+				"jshint",
+				"JSHint"
+			],
+			[
+				"ena",
+				"Package Control: Enable Package"
+			],
+			[
+				"disa",
+				"Package Control: Disable Package"
+			],
+			[
+				"instlal",
+				"Package Control: Install Package"
+			],
+			[
+				"intall",
+				"Package Control: Install Package"
+			],
+			[
+				"error",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"PACKA",
+				"Package Control: List Packages"
+			],
+			[
+				"erro",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"er",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"Error",
+				"SublimeLinter: Show Error List"
+			],
+			[
+				"web",
+				"Web Inspector"
+			],
+			[
+				"we",
+				"Web Inspector"
+			],
+			[
+				"webi",
+				"Web Inspector"
+			],
+			[
+				"webin",
+				"Web Inspector"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"webins",
+				"Web Inspector"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"disc",
+				"Package Control: Discover Packages"
+			],
+			[
+				"packe",
+				"Package Control: Install Package"
+			],
+			[
+				"packet in",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"Package Control: List Packages"
+			],
+			[
+				"packa",
+				"Package Control: Disable Package"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"bg	",
+				"Snippet: background-color: hex"
+			]
+		],
+		"width": 522.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Vincent/Documents/GitHub/XYColorPicker/test.html",
+		"/C/Users/Vincent/Documents/flask/static/colorPicker.js",
+		"/C/Users/Vincent/Documents/GitHub/XYColorPicker/js/colorPicker.js",
+		"/C/Users/Vincent/Documents/flask/static/groups.js",
+		"/C/Users/Vincent/Documents/flask/blueprints/groups.py",
+		"/C/Users/Vincent/Documents/flask/templates/lights.html",
+		"/C/Users/Vincent/Documents/flask/static/colorPickers.js",
+		"/C/Users/Vincent/Documents/flask/hue/hue.py",
+		"/C/Users/Vincent/Documents/flask/static/lights.js",
+		"/C/Users/Vincent/Documents/flask/blueprints/lights.py",
+		"/C/Users/Vincent/Documents/flask/hue/lights.py",
+		"/C/Users/Vincent/Documents/flask/convertors.py",
+		"/C/Users/Vincent/Documents/flask/app.py",
+		"/C/Users/Vincent/Documents/flask/static/async.js",
+		"/C/Users/Vincent/Documents/flask/templates/groups.html",
+		"/C/Users/Vincent/Documents/flask/user.py",
+		"/C/Users/Vincent/Documents/flask/blueprints/settings.py",
+		"/C/Users/Vincent/Documents/flask/templates/settings.html",
+		"/C/Users/Vincent/Documents/flask/templates/layout.html",
+		"/C/Users/Vincent/Documents/flask/db/procs/authUser.sql",
+		"/C/Users/Vincent/Documents/flask/templates/login.html",
+		"/C/Users/Vincent/Documents/flask/db/procs/gUser_Session.sql",
+		"/C/Users/Vincent/Documents/flask/blueprints/user.py",
+		"/C/Users/Vincent/Documents/flask/db/procs/renew_secret.sql",
+		"/C/Users/Vincent/Documents/flask/db/procs/rUser_Session.sql",
+		"/C/Users/Vincent/Documents/flask/db/tables.sql",
+		"/C/Users/Vincent/Documents/flask/static/crypto/hmac-sha1.js",
+		"/C/Users/Vincent/Documents/flask/db/procs/random_string.sql",
+		"/C/Users/Vincent/Documents/flask/db/procs.sql",
+		"/C/Users/Vincent/Documents/flask/static/crypto/core-min.js",
+		"/C/Users/Vincent/Desktop/test/index.html",
+		"/C/Users/Vincent/Documents/flask/static/51b89706-e9d6-4449-af55-48588e6aa93e.dmp",
+		"/C/Users/Vincent/Documents/flask/static/crypto/hmac-md5.js",
+		"/C/Users/Vincent/Documents/flask/README.md",
+		"/C/Users/Vincent/Documents/flask/sftp-config.json",
+		"/C/Users/Vincent/Documents/flask/blueprints/views.py",
+		"/C/Users/Vincent/Documents/flask/static/bootstrap/css/bootstrap.css.map",
+		"/C/Users/Vincent/Documents/flask/static/bootstrap.min.css",
+		"/C/Users/Vincent/Documents/flask/dependency/bootstrap.min.css",
+		"/C/Users/Vincent/Documents/flask/blueprints/__init__.py",
+		"/C/Users/Vincent/Documents/flask/dependency/jquery.min.js",
+		"/C/Users/Vincent/Documents/flask/dependency/bootstrap.min.js",
+		"/C/Users/Vincent/Documents/flask/blueprints/pages.py",
+		"/C/Users/Vincent/Documents/flask/hue.py",
+		"/C/Users/Vincent/Documents/flask/static/fixes.js",
+		"/C/Users/Vincent/Documents/flask/userTest.py",
+		"/C/Users/Vincent/Dropbox/srcdev/MotorDev/Motor/svc/test.cmd",
+		"/C/Users/Vincent/Dropbox/srcdev/MotorDev/Motor/svc/sqlparse.js",
+		"/C/Users/Vincent/Documents/flask/controls.py",
+		"/C/Users/Vincent/Documents/flask/static/websocket.js",
+		"/C/Users/Vincent/Documents/flask/templates/colorPicker.html",
+		"/C/Users/Vincent/Documents/flask/hue/huebeat.py",
+		"/C/Users/Vincent/Documents/flask/models.py",
+		"/C/Users/Vincent/Documents/flask/config.py",
+		"/C/Users/Vincent/Documents/flask/test.py",
+		"/C/Users/Vincent/Documents/flask/views.py",
+		"/C/Users/Vincent/Documents/flask/hue/huesocket.py",
+		"/C/Users/Vincent/Documents/flask/hue/SimpleWebSocketServer.py",
+		"/C/Users/Vincent/Documents/flask/hue/__init__.py",
+		"/C/Users/Vincent/Documents/flask/static/farbtastic.js",
+		"/C/Users/Vincent/Documents/flask/static/hslpicker.js",
+		"/C/Users/Vincent/Documents/flask/static/jquery.colors.pickers.hslCircle.bundle.min.js",
+		"/C/Users/Vincent/Documents/flask/static/jquery.colors.pickers.hslCircle.css",
+		"/C/Users/Vincent/AppData/Roaming/Sublime Text 3/Packages/User/SFTP.errors.log",
+		"/C/Users/Vincent/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Vincent/Documents/flask/errors.py",
+		"/C/Users/Vincent/AppData/Local/Temp/Rar$DRa0.925/farbtastic-master/src/farbtastic.js",
+		"/C/Users/Vincent/Documents/flask/templates/base.html",
+		"/C/Users/Vincent/Documents/flask/static/script.js",
+		"/C/Users/Vincent/Documents/flask/static",
+		"/C/Users/Vincent/Documents/flask/SftpScript.txt",
+		"/C/Users/Vincent/Documents/flask/autoUploader.cmd",
+		"/C/Users/Vincent/Documents/flask/templates/index.html",
+		"/C/Users/Vincent/Documents/flask/start.sh",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/test.cmd",
+		"/D/Users/Vincent/Documenten/Projects/Bellsprout/trunk/BellsproutBackend/GetTest.json",
+		"/D/Users/Vincent/Documenten/Projects/Bellsprout/trunk/BellsproutBackend/PageTest.json",
+		"/D/Users/Vincent/Documenten/Projects/Bellsprout/trunk/BellsproutBackend/tmp.json",
+		"/D/Users/Vincent/Documenten/Projects/Bellsprout/trunk/BellsproutBackend/test.cmd",
+		"/D/Users/Vincent/Documenten/Projects/Bellsprout/trunk/BellsproutBackend/loginTest.json",
+		"/D/Users/Vincent/Tools/Xplore/Xplore.INI",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/app/Bellsprout.Android/Bellsprout.Android.csproj",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/loginTest.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/GetResource.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/GetTest.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/PageTest.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/PostTest.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/PostTest2.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/BellsproutBackend/App.config",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/BellsproutBackend/BellsproutBackend.csproj",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/ProcTest.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/ProcTest2.json",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/test.json",
+		"/C/Users/Vincent/Documents/uni/pi_cv/week2/verslag.tex",
+		"/C/Users/Vincent/Documents/uni/pi_cv/week4/verslag.tex",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/procedures.sql",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/BellsproutBackend.userprefs",
+		"/C/Users/Vincent/Documents/Visual Studio 2013/Projects/SeukCRM Manager/Program.cs",
+		"/C/Users/Vincent/Documents/Visual Studio 2013/Projects/SeukCRM(old)/SeukCRM Manager/app.config",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/BellsproutBackend/Properties/AssemblyInfo.cs",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/tables.sql",
+		"/C/Users/Vincent/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Vincent/Desktop/csTest/csTest/csTest.csproj",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/BellsproutBackend/JsonParser.cs",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutBackend/BellsproutBackend/Json2Sql.cs",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/BellsproutData/BellsproutData.userprefs",
+		"/C/Users/Vincent/Documents/Projects/Bellsprout/trunk/Bellsprout backend/Bellsprout backend/Program.cs",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/style.css",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/index.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/slider.js",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/script.js",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/content.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/slider.css",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/3contact.html",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/test1.html",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/test2.html",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/test3.html",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/flexslider.css",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/init.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/content.json",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/test1.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/userMail.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/user.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/init 2.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/tables.php",
+		"/C/Users/Vincent/AppData/Local/Temp/fz3temp-1/database_object.php",
+		"/D/Users/Vincent/www/Govin2013/js/fn.js",
+		"/C/Users/Vincent/Documents/websites/govin/js/script.js"
+	],
+	"find":
+	{
+		"height": 36.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<project>,D:\\Vincent\\Workspace\\Eyeball\\OpenCV-2.4.5-android-sdk\\sdk\\native",
+			"<project>",
+			"D:\\wamp\\www\\gamingtogether\\trunk",
+			"<project>",
+			"C:\\wamp\\www\\gt\\ao.php,C:\\wamp\\www\\gt\\browse_lans.php,C:\\wamp\\www\\gt\\error_handler.php,C:\\wamp\\www\\gt\\gt.sql,C:\\wamp\\www\\gt\\home.php,C:\\wamp\\www\\gt\\index.php,C:\\wamp\\www\\gt\\lans.php,C:\\wamp\\www\\gt\\leden.php,C:\\wamp\\www\\gt\\login.php,C:\\wamp\\www\\gt\\menu.php,C:\\wamp\\www\\gt\\prj.sublime-project,C:\\wamp\\www\\gt\\prj.sublime-workspace,C:\\wamp\\www\\gt\\profile.php",
+			"C:\\wamp\\www\\gt\\ao.php,C:\\wamp\\www\\gt\\css,C:\\wamp\\www\\gt\\home.php,C:\\wamp\\www\\gt\\images,C:\\wamp\\www\\gt\\inc,C:\\wamp\\www\\gt\\index.php,C:\\wamp\\www\\gt\\js,C:\\wamp\\www\\gt\\lans.php,C:\\wamp\\www\\gt\\leden.php,C:\\wamp\\www\\gt\\login.php,C:\\wamp\\www\\gt\\menu.php,C:\\wamp\\www\\gt\\profile.php"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"doClick",
+			".cursor",
+			"lights",
+			"refrFn",
+			"Matr",
+			"matr",
+			"j",
+			"i",
+			"h",
+			"setRGBSpace",
+			"toRGB",
+			"getLi",
+			"getLights",
+			"Light",
+			"lightlist",
+			"dictDi",
+			"console.",
+			"user",
+			"sigBytes",
+			"JSON.stringify\\((.*)\\)",
+			"models",
+			"controls",
+			"retr",
+			"sliderHei",
+			"sliderHeight",
+			"picker =",
+			"picker",
+			"(\\d)f",
+			"start",
+			"getLights",
+			"closing",
+			"connecti",
+			"log",
+			".log(",
+			"close",
+			"signal",
+			"dataChanged",
+			"serveFor",
+			"dLight",
+			"print ",
+			"print",
+			"\\",
+			"\\r\\n",
+			"'",
+			"\\url{",
+			"db_label",
+			"'",
+			"proc_",
+			"[app].",
+			"configu",
+			"Arimo",
+			"flex",
+			"NULL",
+			"\"\"",
+			"COUNT",
+			"arr",
+			"_POST",
+			"worker",
+			"heartbeat",
+			",\n",
+			",",
+			"harmo",
+			"gods",
+			"brave",
+			"$extra",
+			"$_GET['id']",
+			"$extra",
+			"echo",
+			"trySend",
+			"primes.length",
+			"\\\\\\\\",
+			"\\]\\n \\[",
+			"(\\d|\\.)\\s+(\\d)",
+			"(\\d|.)\\s+(\\d)",
+			"(\\d*\\.\\d\\d)\\d*",
+			"(\\.)\\s+(\\d)",
+			"[",
+			"(\\d)\\s+(\\d)",
+			"(\\d)(\\s+)(\\d)",
+			"]",
+			"\n   ",
+			"host",
+			"extra",
+			"mesh",
+			"parseLine(",
+			"addNei",
+			"neigh",
+			"echoKey(",
+			"EchoWave.echoKey(",
+			"echoKey(",
+			"ping:",
+			"echoReplySendEmpty",
+			"debugMode",
+			"debug",
+			"moveNode",
+			"line",
+			"EchoWave",
+			"addr",
+			"echoWaves[key].father",
+			"init\"",
+			"\\\\matvec",
+			"\\\\matvec\\{.*\\}",
+			"self.__operations.",
+			"echoReplySend",
+			"echoFinal",
+			"echoReceive",
+			"echoReplyReceive",
+			"Sending EchoReply",
+			"op_NOOP",
+			", 0",
+			",0",
+			"print",
+			"reply",
+			"fina",
+			"echoRe",
+			"Neighbour",
+			"neighbour",
+			"Recieve",
+			"recieve",
+			"parseConnection",
+			"echoRecieve",
+			"distanceTo",
+			"echoReply(",
+			"echoResult",
+			"distanceTo",
+			"moveNo",
+			"echoSend",
+			"0."
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"b",
+			"g",
+			"r",
+			"Group",
+			"rec",
+			"$1",
+			"bp",
+			"resp",
+			"$1",
+			".something(",
+			"",
+			"\"",
+			"",
+			"\"",
+			"app.proc_",
+			"",
+			"\"\"",
+			"_POST",
+			"arr",
+			";",
+			"\\\\\\\\ \\\\hline",
+			"\\\\\\\\ \\hline",
+			"\\\\\\\\\n",
+			"\\\\\n",
+			"$1 & $2",
+			"$1 & $ 2",
+			"$1",
+			"$1 & $2",
+			"",
+			"$1 & $2",
+			"\\\\",
+			" ",
+			"",
+			"EchoWave.echoKey(",
+			"cmd",
+			"\\begin{pmatrix}",
+			"Operations.",
+			"Neighbor",
+			"neighbor",
+			"Receive",
+			"receive",
+			"echoReplyRecieve(",
+			"echoReplyRecieve",
+			"echoReplySend",
+			"0",
+			"\\r\\n",
+			"descriptoren",
+			"0",
+			"\\t",
+			"n",
+			"",
+			"N",
+			"M",
+			"],\n[",
+			"[",
+			"], [",
+			"requestUri",
+			"depth",
+			"$doc",
+			"TTest",
+			"@memberof $jn",
+			"$jn.",
+			"@extends core.",
+			"listeners",
+			"{@link core.",
+			"{@link ",
+			"self",
+			"encodeMimeType",
+			"\"<div><h1>$1<p>$2</p></div>\",",
+			"\"<div><h1>$1$2</div>\",",
+			"\"<div>$1$2</div>\",",
+			"<div><p>$1</p></div>",
+			"\\\"$1\\\",",
+			"\\\"$1\\\"",
+			"<div>$1</div>\\n",
+			"productViewer",
+			"585",
+			"",
+			"$arr['lan']",
+			"    ",
+			"Gamer",
+			"<li>",
+			"gamer",
+			"end_",
+			",this.name",
+			"update",
+			"'",
+			"$_POST",
+			"baseName",
+			"",
+			"$arr['password']",
+			"username",
+			"Leden::",
+			"$this->table_class::",
+			"Leden::",
+			"h2>",
+			"<h2",
+			"#FFF200",
+			"#404447",
+			"#DAD305",
+			"#000000",
+			"#FFF200",
+			"index.php",
+			"",
+			"adres"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 3,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "static/colorPicker.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9247,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								779,
+								779
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 289.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "db/users.sql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 544,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								543,
+								543
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/SQL/SQL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "db/colors.sql",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 216,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								216,
+								216
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/PostgreSQL Syntax Highlighting/PostgreSQL.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/C/Users/Vincent/Downloads/SoundSwitch.application",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2053,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"syntax": "Packages/XML/XML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "static/colorPickers.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3501,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3175,
+								3175
+							]
+						],
+						"settings":
+						{
+							"codeintel": true,
+							"codeintel_config":
+							{
+								"JavaScript":
+								{
+									"codeintel_max_recursive_dir_depth": 2,
+									"codeintel_scan_files_in_project": false,
+									"javascriptExtraPaths":
+									[
+									]
+								},
+								"PHP":
+								{
+									"codeintel_max_recursive_dir_depth": 5,
+									"codeintel_scan_files_in_project": false,
+									"phpExtraPaths":
+									[
+									]
+								},
+								"Python":
+								{
+									"env":
+									{
+									}
+								}
+							},
+							"codeintel_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_live": true,
+							"codeintel_live_enabled_languages":
+							[
+								"JavaScript",
+								"Mason",
+								"XBL",
+								"XUL",
+								"RHTML",
+								"SCSS",
+								"Python",
+								"HTML",
+								"Ruby",
+								"Python3",
+								"XML",
+								"Sass",
+								"XSLT",
+								"Django",
+								"HTML5",
+								"Perl",
+								"CSS",
+								"Twig",
+								"Less",
+								"Smarty",
+								"Node.js",
+								"Tcl",
+								"TemplateToolkit",
+								"PHP"
+							],
+							"codeintel_max_recursive_dir_depth": 10,
+							"codeintel_scan_exclude_dir":
+							{
+								"JavaScript":
+								[
+									"/build/",
+									"/min/"
+								]
+							},
+							"codeintel_scan_files_in_project": true,
+							"codeintel_selected_catalogs":
+							[
+								"PyWin32",
+								"jQuery",
+								"Rails"
+							],
+							"codeintel_snippets": true,
+							"codeintel_syntax_map":
+							{
+								"Python Django": "Python"
+							},
+							"codeintel_tooltips": "popup",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"sublime_auto_complete": true,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1620.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/lights.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5461,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								621,
+								621
+							]
+						],
+						"settings":
+						{
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2052.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 36.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.clang":
+	{
+		"height": 102.0
+	},
+	"output.exec":
+	{
+		"height": 120.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 117.0
+	},
+	"project": "flask.sublime-project",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"menu",
+				"gt/menu.php"
+			],
+			[
+				"join",
+				"gamingtogether/trunk/pages/joinLAN.php"
+			],
+			[
+				"user.class",
+				"gt/inc/classes/user.class.php"
+			],
+			[
+				"gro",
+				"gamingtogether/trunk/pages/groups.php"
+			],
+			[
+				"sear",
+				"gamingtogether/trunk/pages/search_user.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/E/Vincent/GitHub/Junction/junction.sublime-project"
+			],
+			[
+				"gt",
+				"/D/wamp/www/gt/prj.sublime-project"
+			],
+			[
+				"gw",
+				"/D/wamp/gwyv.sublime-project"
+			],
+			[
+				"govin",
+				"/D/wamp/www/govin/govin.sublime-project"
+			],
+			[
+				"pos",
+				"/D/wamp/www/pos.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 178.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

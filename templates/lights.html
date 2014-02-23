@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+
+{% set iconOn = "glyphicon glyphicon-certificate" %}
+{% set iconOff = "glyphicon glyphicon-record" %}
+
+{% block pageTitle %}
+Lights
+{% endblock %}
+
+
+{% block styles %}
+{{super()}}
+<style type="text/css">
+  .color { display: block; width: 16px; height: 16px; border-radius: 8px; }
+  .clickable { cursor: pointer; }
+</style>
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+
+<script src="{{url_for('static', filename='lights.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='groups.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='colorPicker.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='colorPickers.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+  var lights = new aur.Lights(refreshLights);
+  var groups = new aur.Groups(function() { lights.refresh(); });
+  groups.autoSync = false;
+
+  var picker = new ColorPickers($("#colorpicker .modal-body"), lights, groups);
+
+  var form = {
+    state: function(light) {
+      var icon = light[1].state.on ? "{{ iconOn }}" : "{{ iconOff }}";
+      return $("<td/>", { "class": "clickable" }).append(
+        $("<span/>", { "class": icon })
+      ).click(function(e) {
+        e.preventDefault();
+        lights.setState(light[0], !light[1].state.on);
+      }); 
+      
+    },
+    color: function(light) {
+      var el = $("<td/>", { "class": "clickable" }).append(
+        $("<span/>", { "class": "color",
+          "data-toggle": "modal", "data-target": "#colorpicker" }).css(
+          "background-color", light[1].state.rgb)
+        );
+        el.click(function(e) {
+          var hex = light[1].state.rgb;
+          var res = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          var rgb = 'rgb(' + parseInt(res[1], 16) + ',' + parseInt(res[2], 16) +
+            ',' + parseInt(res[3], 16) + ')';
+          //picker.hslCircleColorPicker({color: rgb });
+          //picker.light = light;
+          picker.setLight(light);
+        });
+      return el;
+    },
+    name: function(light) {
+      var el = $("<td/>", {"class": "clickable"}).text(light[1].name);
+      el.click(function(e) {
+        e.stopImmediatePropagation();
+        var w = el.width();
+        el.width(w);
+
+        var input = $("<input/>", {"type":"text", "value": light[1].name});
+
+        var changeName = function() {
+          var value = input.val();
+          el.text(value);
+          el.css("width", "auto");
+
+          lights.setName(light[0], value);
+
+          $(document).off("click.aurora_l" + light[0]);
+        };
+
+        input.click(function(e) { e.stopImmediatePropagation(); });
+        input.keypress(function(e) { 
+          var key = e.which || e.keyCode;
+
+          if(key === 13) {
+            e.stopImmediatePropagation(); e.preventDefault();
+            changeName();
+          }
+        });
+
+        el.empty().append(input);
+
+        $(document).on("click.aurora_l" + light[0], changeName);
+
+      });
+
+      return el;
+    }
+  };
+
+  $("#allState").click(function(e) {
+    var state = (e.target.className.indexOf("{{iconOn}}")) > -1 ? true : false;
+    groups.action(0, {state: state});
+  });
+  $("#allColor").click(function(e) {
+      picker.setLight(undefined);
+      $("#colorpicker").modal("show");
+  });
+
+  function refreshLights(data, th) {
+    var fill = [form.name, form.state, form.color ];
+
+    var body = $("<tbody/>");
+
+    for(var i = 0; i < data.length; i++) {
+        var light = data[i];
+        var row = $("<tr/>");
+        row.append($("<td/>").text(data[i][0]));
+
+        for(var y = 0; y < fill.length; y++ ) {
+          var prop = fill[y];
+          if(typeof(prop) == "string")
+            row.append($("<td/>").text(light[1][prop]));
+          else
+            row.append(prop(light));
+        }
+        row.appendTo(body);
+    }
+
+    $("#lightsTable tbody").replaceWith(body);
+
+  }
+
+
+  function color(light) {
+
+    console.log(light[1].state.rgb);
+    var el = $("<td/>", { "class": "clickable" }).append(
+      $("<span/>", { "class": "color",
+        "data-toggle": "modal", "data-target": "#colorpicker" }).css(
+        "background-color", light[1].state.rgb)
+      );
+      el.click(function(e) {
+        var hex = light[1].state.rgb;
+        var res = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        var rgb = 'rgb(' + parseInt(res[1], 16) + ',' + parseInt(res[2], 16) +
+          ',' + parseInt(res[3], 16) + ')';
+        //picker.hslCircleColorPicker({color: rgb });
+        picker.setLight(light);
+      });
+    return el;
+  }
+
+
+</script>
+{% endblock %}
+
+{% block text %}
+  <h1>Lights</h1>
+  <table id="lightsTable" class="table table-striped">
+    <thead>
+      <tr><td>#</td><td>Name</td><td id="allState"><span class="{{iconOn}}"></span>/<span class="{{iconOff}}"></span></td><td id="allColor">Color</td></tr>
+    </thead>
+    <tbody>
+      
+    </tbody>
+  </table>
+  
+<div class="modal fade bs-modal-sm" id="colorpicker" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="width: auto;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Color Picker</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
