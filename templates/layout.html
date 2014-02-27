@@ -15,8 +15,9 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
 {% endblock %}
 
 {% block scripts %}
+`
+<script src="{{url_for('static', filename='js/base.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
-    var aur = { };
     {% block scriptInit %}
     {% endblock %}
 </script>
@@ -26,7 +27,7 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
 <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ url_for('static', filename='fixes.js') }}" type="text/javascript"></script>
 <!-- <script src="{{ url_for('static', filename='websocket.js') }}" type="text/javascript"></script> -->
-<script src="{{ url_for('static', filename='async.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='js/async.js') }}" type="text/javascript"></script>
 {% endblock %}
 
 {% block navbar %}

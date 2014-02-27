@@ -7,5 +7,5 @@ It is stil basic, but it will include:
   - A scheduler (better than the Philips one), for a per day schedule.
 
 Next up:
-  - Session security with HMAC and secret key
-  - GROUPS
+  - Groups
+  - Recently used colors and favorite colors

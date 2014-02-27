@@ -19,16 +19,16 @@ Lights
 {% block scripts %}
 {{super()}}
 
-<script src="{{url_for('static', filename='lights.js')}}" type="text/javascript"></script>
-<script src="{{url_for('static', filename='groups.js')}}" type="text/javascript"></script>
-<script src="{{url_for('static', filename='colorPicker.js')}}" type="text/javascript"></script>
-<script src="{{url_for('static', filename='colorPickers.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/lights.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/groups.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/colorPicker.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/colorPickers.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
-  var lights = new aur.Lights(refreshLights);
-  var groups = new aur.Groups(function() { lights.refresh(); });
+  var lights = new $aur.Lights(refreshLights);
+  var groups = new $aur.Groups(function() { lights.refresh(); });
   groups.autoSync = false;
 
-  var picker = new ColorPickers($("#colorpicker .modal-body"), lights, groups);
+  var picker = new $aur.ColorPickers($("#colorpicker .modal-body"), lights, groups);
 
   var form = {
     state: function(light) {
@@ -47,13 +47,7 @@ Lights
           "data-toggle": "modal", "data-target": "#colorpicker" }).css(
           "background-color", light[1].state.rgb)
         );
-        el.click(function(e) {
-          var hex = light[1].state.rgb;
-          var res = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-          var rgb = 'rgb(' + parseInt(res[1], 16) + ',' + parseInt(res[2], 16) +
-            ',' + parseInt(res[3], 16) + ')';
-          //picker.hslCircleColorPicker({color: rgb });
-          //picker.light = light;
+        el.click(function() {
           picker.setLight(light);
         });
       return el;
@@ -101,12 +95,12 @@ Lights
     var state = (e.target.className.indexOf("{{iconOn}}")) > -1 ? true : false;
     groups.action(0, {state: state});
   });
-  $("#allColor").click(function(e) {
+  $("#allColor").click(function() {
       picker.setLight(undefined);
       $("#colorpicker").modal("show");
   });
 
-  function refreshLights(data, th) {
+  function refreshLights(data) {
     var fill = [form.name, form.state, form.color ];
 
     var body = $("<tbody/>");
@@ -118,7 +112,7 @@ Lights
 
         for(var y = 0; y < fill.length; y++ ) {
           var prop = fill[y];
-          if(typeof(prop) == "string")
+          if(typeof(prop) === "string")
             row.append($("<td/>").text(light[1][prop]));
           else
             row.append(prop(light));
@@ -128,26 +122,6 @@ Lights
 
     $("#lightsTable tbody").replaceWith(body);
 
-  }
-
-
-  function color(light) {
-
-    console.log(light[1].state.rgb);
-    var el = $("<td/>", { "class": "clickable" }).append(
-      $("<span/>", { "class": "color",
-        "data-toggle": "modal", "data-target": "#colorpicker" }).css(
-        "background-color", light[1].state.rgb)
-      );
-      el.click(function(e) {
-        var hex = light[1].state.rgb;
-        var res = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-        var rgb = 'rgb(' + parseInt(res[1], 16) + ',' + parseInt(res[2], 16) +
-          ',' + parseInt(res[3], 16) + ')';
-        //picker.hslCircleColorPicker({color: rgb });
-        picker.setLight(light);
-      });
-    return el;
   }
 
 
