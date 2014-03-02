@@ -37,4 +37,11 @@ var $aur = {};
         classDef.properties = this.properties ? this.properties.clone() : undefined;
         return classDef;
     };
+
+    $aur.extend = function(dest, src) {
+        for( var n in src) {
+            if(src.hasOwnProperty(n))
+                dest[n] = src[n];
+        }
+    };
 })($aur);

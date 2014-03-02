@@ -15,7 +15,9 @@
             this.light = null;
 
             this.pickers = {
-                "xy": { button: null, picker: null, jControl: null}
+                "xy": { button: null, picker: null, jControl: null},
+                "colors": { button: null, picker: null, jControl: null}
+
                 //"hsl": {button: null, picker: null, jControl: null}
             };
 
@@ -23,25 +25,23 @@
 
             this.makeButtons();
 
-            //this.createHslPicker();
             this.createXYPicker();
+            this.createColorsPanel();
 
             this.setPicker("xy");
         },
 
 
         makeButtons: function() {
-            return; // don't need no buttons!
-            var group = $("<div/>", { "class": "btn-group"});
+            var self = this;
+            var group = $("<div/>", { "class": "btn-group elementCenter"});
             var but = $("<button/>", {"type":"button", "class": "btn btn-default"});
 
-            var self = this;
-            //this.pickers.hsl.button = but.clone().text("HSL").click(function() { self.setPicker("hsl"); });
-            //this.pickers.xy.button = but.clone().text("XY").click(function() { self.setPicker("xy"); });
-
-            // hsl needs fixing
-            //group.append(this.pickers.hsl.button);
-            //group.append(this.pickers.xy.button);
+            this.pickers.xy.button = but.clone().text("XY").click(function() { self.setPicker("xy"); });
+            this.pickers.colors.button = but.clone().text("Colors").click(function() { self.setPicker("colors"); });
+            
+            group.append(this.pickers.xy.button);
+            group.append(this.pickers.colors.button);
 
             this.jControl.prepend(group);
         },
@@ -103,6 +103,11 @@
                     self.groups.setColor(0, [xybri[0], xybri[1], bri]);
             };
             this.pickers.xy.picker.start();
+        },
+        createColorsPanel: function() {
+            this.pickers.colors.picker = new $aur.UserColorPicker({parent: this});
+            this.pickers.colors.picker.start();
+            this.pickers.colors.jControl = this.pickers.colors.picker.jControl;
         }
     });
 

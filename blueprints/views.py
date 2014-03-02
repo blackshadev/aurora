@@ -10,14 +10,14 @@ def blueprint(hue):
 
     @views.route('/groups')
     def groups():
-        return render_template("groups.html", user=request.user)
+        return render_template("async/groups.html", user=request.user)
 
     @views.route('/lights')
     def lights():
-        return render_template("lights.html", user=request.user)
+        return render_template("async/lights.html", user=request.user)
 
     @views.route('/settings')
     def settings():
-        return render_template("settings.html", user=request.user)
+        return render_template("async/settings.html", user=request.user)
 
     return views

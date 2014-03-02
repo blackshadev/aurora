@@ -21,7 +21,7 @@
 {% endblock %}
 
 {% block scriptInit %}
-aur.noLogin = true;
+$aur.noLogin = true;
 {% endblock %}
 
 {% block scripts %}
@@ -30,7 +30,7 @@ aur.noLogin = true;
 <script type="text/javascript">
 
 if(typeof(Storage) !== "undefined") {
-  aur.authenticate(undefined, function() {//success
+  $aur.authenticate(undefined, function() {//success
     //window.location.href = "/";
   });
 }
@@ -39,7 +39,7 @@ $('#loginForm').submit(function(e) {
     e.preventDefault();
     var fData = $(this).serializeObject();
 
-    aur.login(fData, function() { // error
+    $aur.login(fData, function() { // error
       $("#errLabel").text("Login failed, try again.");
     }, function() { // succeed
       window.location.href = "/";

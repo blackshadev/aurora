@@ -1,7 +1,7 @@
 drop table if exists userColors CASCADE;
-create table userColors (
-    id          serial primary key  not null
-  , uid         int                 not null
-  , descr       varchar(128)
-  , color       varchar(64)
-);
+-- create table userColors (
+--     uid         int                 not null
+--   , color       varchar(64)         not null
+--   , descr       varchar(128)
+--   , CONSTRAINT usercolors_pkey primary key(uid, color)
+-- );

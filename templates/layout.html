@@ -12,6 +12,7 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
 
 {% block styles %}
 <link href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ url_for('static', filename='style.css')}}" rel="stylesheet" type="text/css" />
 {% endblock %}
 
 {% block scripts %}
@@ -31,7 +32,7 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
 {% endblock %}
 
 {% block navbar %}
-<nav class="navbar navbar-default" role="navigation">
+<nav id="mainNav" class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -43,7 +44,7 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
       </button>
       <a class="navbar-brand" href="#">Aurora</a>
     </div>
-    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{user.name}}</a>, <a href="javascript: aur.logout();">logout</a></p>
+    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">{{user.name}}</a>, <a href="javascript: $aur.logout();">logout</a></p>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -60,8 +61,23 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
 {% endblock %}
 
 {% block content %}
-<div class="container">
+<div id="container" class="container">
 {% block text %}{% endblock %}
 </div>
+
+<div class="modal fade bs-modal-sm" id="colorpicker" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content" style="width: auto;">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Color Picker</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
 

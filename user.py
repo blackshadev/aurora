@@ -53,13 +53,13 @@ class Users:
     @staticmethod
     def validateRequest(json):
         if "sessid" not in json or "signature" not in json:
-            return False
+            return (False, None)
 
         sessid = json["sessid"]
         user = User(sessid)
         del json["sessid"]
 
-        return user.isValid and user.validateData(json)
+        return (user.isValid and user.validateData(json), user)
 
 
 
@@ -87,10 +87,13 @@ class User:
     def fromRecord(self, rec):
         self.isValid = rec != None and len(rec) > 5
         if(self.isValid):
+            self.uid = rec[0]
             self.username = rec[1]
             self.name = rec[3]
-            self.sessid = rec[4]
-            self.secret = rec[5]
+            self.settings = rec[4]
+            self.colors = rec[5]
+            self.sessid = rec[6]
+            self.secret = rec[7]
     def validateData(self, data):
         if "signature" not in data:
             return False

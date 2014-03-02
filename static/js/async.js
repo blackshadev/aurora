@@ -2,6 +2,7 @@
 (function($aur) {
     var secret = "";
     var sess = "";
+    var user = null;
 
     function setSecret(newSecret) {
         console.log("newSecret: " + newSecret);
@@ -20,6 +21,15 @@
         var str = signature.finalize().toString();
 
         return str;
+    }
+
+    function createUser(data) {
+        sess = data.sessid;
+        user = new $aur.User(data);
+    }
+
+    $aur.getUser = function() {
+        return user;
     }
 
     $aur.apiCall = function(pars) {
@@ -107,7 +117,7 @@
                     return;
                 }
 
-                sess = sessid;
+                createUser(data);
 
                 if(succ) succ();
             }
@@ -126,7 +136,7 @@
                     return;
                 }
 
-                sess = data.sess;
+                createUser(data);
 
                 if(fData.remember)
                     $aur.storage.set("Aurora_Session", data.sess);
@@ -148,5 +158,34 @@
         $aur.logout();
     }
 
+    $aur.User = $aur.Object.extend({
+        username: undefined,
+        name: undefined,
+        settings: undefined,
+        colors: undefined,
+        create: function(data) {
+            for(var n in data) {
+                if(this.hasOwnProperty(n) && data.hasOwnProperty(n) && 
+                  typeof(data[n]) !== "function")
+                    this[n] = data[n];
+            }
+        }
+    });
+
+    $aur.getUser = function() {
+        if(sess === "" || secret === "")
+            return;
+
+        var pars = {
+            type: "POST",
+            url: "/user",
+            success: function(data) {
+                user = new $aur.User(data);
+            }
+        };
+        $aur.apiCall(pars);
+    };
+
+    $aur.getUser();
 
 })($aur);

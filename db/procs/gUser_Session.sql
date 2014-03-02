@@ -1,9 +1,11 @@
---drop type user_rec cascade;
-create or replace TYPE user_rec as 
+drop type user_rec cascade;
+create TYPE user_rec as 
 (user_id integer,
  user_name varchar,
  passhash varchar,
  name varchar,
+ settings text,
+ colors text,
  sessid uuid,
  secret varchar
  );

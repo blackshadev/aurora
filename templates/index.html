@@ -1,5 +1,38 @@
 {% extends "layout.html" %}
 
+{% block styles %}
+{{super()}}
+
+{% endblock %}
+
+{% block scripts %}
+{{super()}}
+<script src="{{url_for('static', filename='js/lights.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/groups.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/xycolorPicker.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/usercolorPicker.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/colorPickers.js')}}" type="text/javascript"></script>
+<script type="text/javascript">
+    var els = $("#mainNav a");
+    console.log(els);
+    els.ready(function() {
+        console.log("ready");
+    });
+    $("nav.navbar ul.nav a").click(function(e) {
+        e.preventDefault();
+        var container = $("div#container");
+        var url = $(this).attr("href");
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function(data) {
+                container.html(data);
+            }
+        });
+    });
+</script>
+{% endblock %}
+
 {% block text %}
   <h1>Welkom to Aurora</h1>
   <p>Nop still nothing to tell you guys here</p>

@@ -92,7 +92,6 @@
             }
         };
 
-        console.log(aur);
 
         $aur.apiCall(pars);
     };

@@ -10,6 +10,7 @@ from user import User, Users
 #blueprints
 import blueprints.views as views
 import blueprints.lights as lights
+import blueprints.auth as auth
 import blueprints.user as user
 import blueprints.settings as settings
 import blueprints.groups as groups
@@ -27,6 +28,7 @@ app.secret_key = "stup1ds3cr37s"
 Bootstrap(app)
 
 #blueprints
+app.register_blueprint(auth.blueprint(Users))
 app.register_blueprint(user.blueprint(Users))
 app.register_blueprint(views.blueprint(hue))
 app.register_blueprint(settings.blueprint(hue))
@@ -34,7 +36,7 @@ app.register_blueprint(lights.blueprint(hue))
 app.register_blueprint(groups.blueprint(hue))
 
 session_required = ["views"]
-no_sign_required = ["user"]
+no_sign_required = ["auth"]
 
 @app.before_request
 def before_request():
@@ -45,7 +47,8 @@ def before_request():
             
     if(request.method != "GET" and request.endpoint != None and \
      request.endpoint.split(".")[0] not in no_sign_required):
-        isValid = Users.validateRequest(request.get_json())
+        isValid, user = Users.validateRequest(request.get_json())
+        request.user = user
         if not isValid:
             print "not valid"
             resp = {}
