@@ -1,0 +1,5 @@
+#colorpicker .modal-body {
+    text-align: center;
+}
+.color { display: block; width: 16px; height: 16px; border-radius: 8px; }
+.clickable { cursor: pointer; }
