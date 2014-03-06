@@ -9,6 +9,7 @@ def blueprint(Users):
     def gUser():
         resp = request.user.__dict__.copy()
         del resp["secret"]
+
         return Response(Json.dumps(resp), mimetype="appliction/json")
 
     @bp.route("/user/colors", methods=["PUT"])

@@ -89,6 +89,10 @@
 
             this.pickers.xy.picker = new XYPicker(picker[0]);
             this.pickers.xy.jControl = picker;
+            this.xyToRgb = function(x, y, bri) { 
+                return this.pickers.xy.picker.xyToRgb(x, y, bri);
+            };
+
             this.pickers.xy.picker.onClick = function(xy, ev) {
                 var offset = $(this.canvas).offset();
                 xy[0] = ev.pageX - offset.left;

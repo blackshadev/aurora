@@ -77,8 +77,15 @@
         },
         colorBulb: function(color) {
             var self = this;
+
+            var xy = this.parent.xyToRgb(color.color.dat[0], color.color.dat[0], color.color.bri);
+            var colorStr = "#" + xy.map(function(x) { 
+                x = parseInt(x).toString(16);
+                return (x.length === 1) ? "0"+x : x;
+            }).join("");
+
             return $("<span/>", 
-                    {"class": "color", "style": "background: #000"}).
+                    {"class": "color"}).css("background-color", colorStr).
                         click(function() { self.setColor(color); });
         },
         setColor: function(color) {
