@@ -12,7 +12,7 @@ def blueprint(hue):
 
     @bp.route("/api/groups/<gId>/action", methods=["PUT"])
     def aGroup(gId):
-        json = request.get_json()
+        json = request.user_data
 
         if "state" in json:
             json["on"] = json["state"]

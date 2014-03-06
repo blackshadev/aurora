@@ -16,18 +16,22 @@ Aurora - {% block pageTitle %}{% endblock pageTitle %}
 {% endblock %}
 
 {% block scripts %}
-`
+<!-- Libs -->
+<script src="{{ url_for('static', filename='crypto/hmac-md5.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='jquery.min.js') }}" type="text/javascript"></script>
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+<script src="{{ url_for('static', filename='fixes.js') }}" type="text/javascript"></script>
+
+<!-- Aur Libs -->
 <script src="{{url_for('static', filename='js/base.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/user.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     {% block scriptInit %}
     {% endblock %}
 </script>
 
-<script src="{{ url_for('static', filename='crypto/hmac-md5.js') }}" type="text/javascript"></script>
-<script src="{{ url_for('static', filename='jquery.min.js') }}" type="text/javascript"></script>
-<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
-<script src="{{ url_for('static', filename='fixes.js') }}" type="text/javascript"></script>
-<!-- <script src="{{ url_for('static', filename='websocket.js') }}" type="text/javascript"></script> -->
+<!-- Init -->
 <script src="{{ url_for('static', filename='js/async.js') }}" type="text/javascript"></script>
 {% endblock %}
 

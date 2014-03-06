@@ -13,6 +13,7 @@
 <script src="{{url_for('static', filename='js/usercolorPicker.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/colorPickers.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
+    /*globals $aur*/
     var els = $("#mainNav a");
     console.log(els);
     els.ready(function() {
@@ -30,6 +31,12 @@
             }
         });
     });
+
+    $aur.globals = {};
+    $aur.globals.lights = new $aur.Lights({ autoSync: false });
+    $aur.globals.groups = new $aur.Groups({ autoSync: false });
+    $aur.globals.picker = new $aur.ColorPickers($("#colorpicker .modal-body"));
+
 </script>
 {% endblock %}
 

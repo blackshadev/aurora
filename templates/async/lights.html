@@ -12,12 +12,16 @@
   </table>
 
 <script type="text/javascript">
+(function($aur) {
   /* globals $aur */
-  var lights = new $aur.Lights(refreshLights);
-  var groups = new $aur.Groups(function() { lights.refresh(); });
-  groups.autoSync = false;
+  var lights = $aur.globals.lights;
+  var groups = $aur.globals.groups;
+  var picker = $aur.globals.picker;
 
-  var picker = new $aur.ColorPickers($("#colorpicker .modal-body"), lights, groups);
+  lights.onRefresh = refreshLights;
+  groups.onRefresh = function() { $aur.globals.lights.refresh(); };
+
+  lights.setAsync(true);
 
   var form = {
     state: function(light) {
@@ -112,4 +116,5 @@
     $("#lightsTable tbody").replaceWith(body);
 
   }
+})($aur);
 </script>

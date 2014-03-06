@@ -47,7 +47,8 @@ def before_request():
             
     if(request.method != "GET" and request.endpoint != None and \
      request.endpoint.split(".")[0] not in no_sign_required):
-        isValid, user = Users.validateRequest(request.get_json())
+        data = request.get_json()
+        isValid, user = Users.validateRequest(data)
         request.user = user
         if not isValid:
             print "not valid"
@@ -55,6 +56,7 @@ def before_request():
             resp[0] = "error"
             resp[1] = "Invalid signature"
             return Response(Json.dumps(resp), mimetype="appliction/json")
+        request.user_data = Json.loads(data["data"])
 
 @app.route("/colorpicker")
 def colorPicker():

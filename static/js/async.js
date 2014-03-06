@@ -30,22 +30,24 @@
 
     $aur.getUser = function() {
         return user;
-    }
+    };
 
     $aur.apiCall = function(pars) {
         var cpy = $.extend({}, pars);
         pars = pars || {};
         cpy.contentType = "application/json";
         cpy.type = pars.type || "GET";
-        cpy.data = cpy.data || {};
+        cpy.data = {};
         cpy.processData = false;
 
+        if(pars.data === undefined)
+            pars.data = {};
+
         if(!$aur.noLogin) {
-            cpy.data.signature = signData(cpy.data);
+            cpy.data.signature = signData(pars.data);
             cpy.data.sessid = sess;
-            if(!cpy.data.signature && !cpy.data.sessid)
-                cpy.data = {};
-        } 
+            cpy.data.data = JSON.stringify(pars.data);
+        }
 
         cpy.data = JSON.stringify(cpy.data);
 
@@ -158,21 +160,7 @@
         $aur.logout();
     }
 
-    $aur.User = $aur.Object.extend({
-        username: undefined,
-        name: undefined,
-        settings: undefined,
-        colors: undefined,
-        create: function(data) {
-            for(var n in data) {
-                if(this.hasOwnProperty(n) && data.hasOwnProperty(n) && 
-                  typeof(data[n]) !== "function")
-                    this[n] = data[n];
-            }
-        }
-    });
-
-    $aur.getUser = function() {
+    var setUser = function(fn) {
         if(sess === "" || secret === "")
             return;
 
@@ -180,12 +168,58 @@
             type: "POST",
             url: "/user",
             success: function(data) {
-                user = new $aur.User(data);
+                fn(new $aur.User(data));
             }
         };
         $aur.apiCall(pars);
     };
+    setUser(function(usr) { 
+        user = usr;
+        $aur.globals.user = usr;
+    });
 
-    $aur.getUser();
+    $aur.getUser = function() { return user; };
+
+    $aur.AsyncBase = $aur.Object.extend({
+        onRefresh: null,
+        onError: null,
+        async: false,
+        syncTime: 2000,
+        /*Internals*/
+        th: null, //timeout handle
+        create: function(oPar) {
+            $aur.extend(this, oPar);
+        },
+        setAsync: function(flag) {
+            this.async = flag;
+            if(flag)
+                this.refresh();
+        },
+        send: function(pars) {
+            var self = this;
+
+            if(this.th) {
+                window.clearTimeout(this.th);
+                this.th = null;
+            }
+
+            pars.success = function() {
+                if(self.autoSync)
+                        self.th = window.setTimeout(
+                            function() { self.refresh(); }, 
+                            self.syncTime);
+
+                self.onRefresh.apply(this, arguments);
+            };
+            pars.error = function() {
+                self.onError.apply(this, arguments);
+            };
+
+            $aur.apiCall(pars);
+        },
+        refresh: function() {
+            throw "Not implemented";
+        }
+    });
 
 })($aur);

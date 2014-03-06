@@ -1,85 +1,57 @@
 /*global $aur */
 (function ($aur) {
-	
-	$aur.Lights = $aur.Object.extend({
-		autoSync: false,
-		syncTime: 2000,
-		th: null,
-		create: function(refrFn, errFn) {
-			this.refrFn = refrFn;
-			this.errFn = errFn;
+    $aur.Lights = $aur.AsyncBase.extend({
+        refresh: function() {
 
-			this.autoSync = false;//true;
-			this.syncTime = 2000;
-			this.th = null;
+            var pars = {
+                url: "/api/lights",
+                type: "POST"
+            };
 
-			this.refresh();
-		},
-		refresh: function() {
-			var self = this;
+            this.send(pars);
+        },
+        setState: function(id, state) {
+            var self = this;
+            var pars = { 
+                url: "/api/lights/" + id + "/state", 
+                type: "PUT",
+                success: function() {
+                    self.refresh();
+                }
+            };
+            pars.data = {state: state};
+            $aur.apiCall(pars);
+        },
+        setColor: function(id, color, mode) {
+            var self = this;
+            
+            var pars = { 
+                url: "/api/lights/" + id + "/color", 
+                dataType: "json", 
+                type: "PUT",
+                success: function() {
+                    self.refresh();
+                }
+            };
+            pars.data = {color: color, mode: mode};
 
-			if(this.th) {
-				window.clearTimeout(this.th);
-				this.th = null;
-			}
+            $aur.apiCall(pars);
+        },
+        setName: function(id, name) {
+            var self = this;
 
-			var pars = {
-				url: "/api/lights",
-				type: "POST",
-				success: function(data) {
-					if(self.autoSync)
-						self.th = window.setTimeout(
-							function() { self.refresh(); }, 
-							self.syncTime);
+            var pars = {
+                url: "/api/lights/" + id + "/name",
+                dataType: "json",
+                type: "PUT",
+                success: function() {
+                    self.refresh();
+                }
+            };
+            pars.data = {name:name};
 
-					self.refrFn(data);
-				}
-			};
-
-			$aur.apiCall(pars);
-		},
-		setState: function(id, state) {
-			var self = this;
-			var pars = { 
-				url: "/api/lights/" + id + "/state", 
-				type: "PUT",
-				success: function() {
-					self.refresh();
-				}
-			};
-			pars.data = {state: state};
-			$aur.apiCall(pars);
-		},
-		setColor: function(id, color, mode) {
-			var self = this;
-			
-			var pars = { 
-				url: "/api/lights/" + id + "/color", 
-				dataType: "json", 
-				type: "PUT",
-				success: function() {
-					self.refresh();
-				}
-			};
-			pars.data = {color: color, mode: mode};
-
-			$aur.apiCall(pars);
-		},
-		setName: function(id, name) {
-			var self = this;
-
-			var pars = {
-				url: "/api/lights/" + id + "/name",
-				dataType: "json",
-				type: "PUT",
-				success: function() {
-					self.refresh();
-				}
-			};
-			pars.data = {name:name};
-
-			$aur.apiCall(pars);
-		}
-	});
+            $aur.apiCall(pars);
+        }
+    });
 
 })($aur);

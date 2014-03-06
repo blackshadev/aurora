@@ -53,15 +53,13 @@ class Users:
     @staticmethod
     def validateRequest(json):
         if "sessid" not in json or "signature" not in json:
+            print "No sess found in (%s)", str(json)
             return (False, None)
 
         sessid = json["sessid"]
         user = User(sessid)
-        del json["sessid"]
 
         return (user.isValid and user.validateData(json), user)
-
-
 
 class User:
     __dict__ = ["sessid", "username", "name", "secret", "isValid"]
@@ -95,20 +93,28 @@ class User:
             self.sessid = rec[6]
             self.secret = rec[7]
     def validateData(self, data):
-        if "signature" not in data:
+        if "signature" not in data or "data" not in data:
             return False
         given_sign = data["signature"]
-        del data["signature"]
+
         sign = hmac.new(self.secret)
-        sign.update(Json.dumps(data, separators=(',', ':')))
+        sign.update(data["data"])
         calce = sign.hexdigest()
         valid = str(given_sign) == str(calce)
         if not valid:
-            print "signed: %s" % Json.dumps(data)
+            print "signed: %s" % Json.dumps(data["data"], separators=(',', ':'))
             print "secret: %s" % self.secret
             print "given: %s, %s" % (given_sign, type(given_sign))
             print "calce: %s, %s" % (calce, type(calce))
         return valid
+    def setColors(self, colors):
+        sColors = Json.dumps(colors, separators=(',', ':'))
+        conn = psycopg2.connect(database=Users.db, user=Users.user)
+        cur = conn.cursor()
+        cur.execute("update users set colors=%s where 1=1 and id=%s", (sColors, self.uid))
+        cur.close()
+        conn.commit()
+        conn.close()
     def __str__(self):
         return "[%s][%s]: (%s, %s, %s)" % (self.username, self.name,
             self.sessid, self.secret, str(self.isValid))

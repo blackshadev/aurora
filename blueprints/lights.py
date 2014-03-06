@@ -17,7 +17,7 @@ def blueprint(hue):
 
     @bp.route("/api/lights/<lId>/state", methods=['PUT'])
     def setLightState(lId):
-        json = request.get_json()
+        json = request.user_data
 
         if "state" not in json:
             return badArguments(Response, json)
@@ -29,7 +29,7 @@ def blueprint(hue):
 
     @bp.route("/api/lights/<lId>/color", methods=['PUT'])
     def setLightColor(lId):
-        json = request.get_json()
+        json = request.user_data
 
         if "color" not in json or "mode" not in json:
             return badArguments(Response, json)
@@ -50,7 +50,7 @@ def blueprint(hue):
         return Response(Json.dumps(resp), mimetype="appliction/json")
     @bp.route("/api/lights/<lId>/name", methods=['PUT'])
     def setLightName(lId):
-        json = request.get_json()
+        json = request.user_data
 
         if "name" not in json:
             return badArguments(Response, json)

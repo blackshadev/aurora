@@ -44,7 +44,48 @@
             this.jRecent = panels[0].appendTo(this.jControl);
             this.jUser = panels[1].appendTo(this.jControl);
 
+            this.fillUserSection();
 
+        },
+        fillUserSection: function() {
+            var self = this;
+
+            // wait till user is filled
+            var user = $aur.globals.user;
+            if(!user) { window.setTimeout(function() { self.fillUserSection(); }, 10); return; }
+
+            var colors = user.colors;
+
+            var container = $(".panel-body", this.jUser);
+            container.empty();
+
+            var table = $("<table/>", { "class": "table table-striped" });
+
+            for(var n in colors) {
+                if(!colors.hasOwnProperty(n)) continue;
+
+                var row = $("<tr/>").appendTo(table);
+                
+                row.append(
+                        $("<td/>").append(self.colorBulb(colors[n]))
+                    ).append(
+                        $("<td/>").text(colors[n].name)
+                    );
+            }
+            
+            container.append(table);
+        },
+        colorBulb: function(color) {
+            var self = this;
+            return $("<span/>", 
+                    {"class": "color", "style": "background: #000"}).
+                        click(function() { self.setColor(color); });
+        },
+        setColor: function(color) {
+            console.log(color);
+
+            debugger;
+            this.parent.setColor(color.color);
         }
     });
 })($aur);

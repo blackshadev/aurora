@@ -8,10 +8,11 @@
         jControl: null,
         pickers: null,
         jPicker: null,
-        create: function(el, lights, groups) {
+        create: function(el) {
             this.jControl = el;
-            this.lights = lights;
-            this.groups = groups;
+
+            this.lights = $aur.globals.lights;
+            this.groups = $aur.globals.groups;
             this.light = null;
 
             this.pickers = {
@@ -97,12 +98,15 @@
             this.pickers.xy.picker.onSelect = function(xybri) {
                 var bri = Math.round(xybri[2] * 255);
 
-                if(self.light)
-                    self.lights.setColor(self.light[0], [xybri[0], xybri[1], bri], "xy");
-                else
-                    self.groups.setColor(0, [xybri[0], xybri[1], bri]);
+                self.setColor({ type:"xy", dat: [xybri[0], xybri[1], bri]});
             };
             this.pickers.xy.picker.start();
+        },
+        setColor: function(color) {
+            if(this.light)
+                this.lights.setColor(this.light[0], color.dat, color.type);
+            else
+                this.groups.setColor(0, color.dat, color.type);
         },
         createColorsPanel: function() {
             this.pickers.colors.picker = new $aur.UserColorPicker({parent: this});

@@ -1,39 +1,14 @@
 /*global $aur */
 (function($aur) {
 
-    $aur.Groups = $aur.Object.extend({
-        create: function(refrFn, errFn) {
-            this.refrFn = refrFn;
-            this.errFn = errFn;
-
-            this.autoSync = false;//true;
-            this.syncTime = 2000;
-            this.th = null;
-
-            this.refresh();
-        },
+    $aur.Groups = $aur.AsyncBase.extend({
         refresh: function() {
-            var self = this;
-
-            if(this.th) {
-                window.clearTimeout(this.th);
-                this.th = null;
-            }
-
             var pars = {
                 url: "/api/groups",
-                type: "POST",
-                success: function(data) {
-                    if(self.autoSync)
-                        self.th = window.setTimeout(
-                            function() { self.refresh(); }, 
-                            self.syncTime);
-
-                    self.refrFn(data);
-                }
+                type: "POST"
             };
 
-            $aur.apiCall(pars);
+            this.send(pars);
         },
         action: function(gId, action) {
             var self = this;
@@ -41,16 +16,12 @@
             var pars = {
                 url: "/api/groups/" + gId + "/action",
                 type: "PUT",
-                success: function(data) {
-                    if(self.autoSync)
-                        self.th = window.setTimeout(
-                            function() { self.refresh(); }, 
-                            self.syncTime);
-
-                    self.refrFn(data);
+                success: function() {
+                    self.refresh();
                 }
             };
             pars.data = action;
+
             $aur.apiCall(pars);
         },
         setColor: function(gId, color) {
@@ -72,28 +43,14 @@
         this.refresh();
     }
     Groups.prototype.refresh = function() {
-        var self = this;
-
-        if(this.th) {
-            window.clearTimeout(this.th);
-            this.th = null;
-        }
 
         var pars = {
             url: "/api/groups",
-            type: "POST",
-            success: function(data) {
-                if(self.autoSync)
-                    self.th = window.setTimeout(
-                        function() { self.refresh(); }, 
-                        self.syncTime);
-
-                self.refrFn(data);
-            }
+            type: "POST"
         };
 
 
-        $aur.apiCall(pars);
+        this.send(pars);
     };
     Groups.prototype.action = function(gId, action) {
         var self = this;
