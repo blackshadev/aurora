@@ -13,7 +13,8 @@ def blueprint(Users):
 
     @bp.route("/login", methods=["POST"])
     def loginUser():
-        json = request.get_json()
+        json = Json.loads(request.get_json()["data"])
+        
         
         user = Users.auth(json["username"], json["pass"])
         resp = {}

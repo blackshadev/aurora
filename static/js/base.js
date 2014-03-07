@@ -1,6 +1,8 @@
 var $aur = {};
 
 (function($aur) {
+    $aur.globals = {};
+    
     $aur.Object = function () { };
     $aur.Object.prototype.create = function () { };
     $aur.Object.prototype.destroy = function() { };

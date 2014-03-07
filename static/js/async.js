@@ -46,8 +46,8 @@
         if(!$aur.noLogin) {
             cpy.data.signature = signData(pars.data);
             cpy.data.sessid = sess;
-            cpy.data.data = JSON.stringify(pars.data);
         }
+        cpy.data.data = JSON.stringify(pars.data);
 
         cpy.data = JSON.stringify(cpy.data);
 
