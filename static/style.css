@@ -1,5 +1,8 @@
-#colorpicker .modal-body {
-    text-align: center;
+#colorpicker .modal-body { overflow: hidden;}
+#colorpicker .panel-group { float: left; width: 300px; }
+#colorpicker .picker { 
+    float: left; width: 215px;
+    margin: 0 12px 12px 0;
 }
 .color { display: block; width: 16px; height: 16px; border-radius: 8px; }
 .clickable { cursor: pointer; }

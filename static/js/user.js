@@ -2,6 +2,8 @@
 (function($aur) {
 
     $aur.User = $aur.Object.extend({
+        colors: null,
+        settings: null,
         create: function(data) {
             this.setProperties(data);
         },
@@ -14,18 +16,27 @@
                     else
                         this[n] = data[n];
             }
+
         },
-        updateColors: function() {
+        addColor: function(name, color, type) {
+            type = type || "xy";
+
+            this.colors[name] = { type:type, dat: color };
+
+            //this.saveColors();
+        },
+        saveColors: function() {
             var pars = { 
                 type: "PUT",
                 url: "user/colors",
                 data: this.colors,
                 success: function(data) {
-                    console.log(data);
+
                 }
             };
             $aur.apiCall(pars);
         }
     });
+
 
 })($aur);

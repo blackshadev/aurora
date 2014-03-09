@@ -25,7 +25,7 @@ var XYPicker = (function() {
         this.canvas.onmouseup = function(ev) { self.doDragEnd(ev); };
         this.canvas.onmousemove = function(ev) { self.doDrag(ev); };
 
-        this.canvas.onclick = function(ev) { console.log(ev); self.doClick(ev); };
+        this.canvas.onclick = function(ev) { self.doClick(ev); };
         this.canvas.onresize = function() { self.draw(true); };
         
     }
