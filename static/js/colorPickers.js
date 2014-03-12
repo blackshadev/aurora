@@ -51,6 +51,7 @@
             }
 
             this.pickers.xy.selected = [xy[0], xy[1], bri];
+            this.color = { "type": "xy", "dat": this.pickers.xy.selected};
             this.pickers.xy.draw();
         },
         createXYPicker: function() {
@@ -112,6 +113,7 @@
             this.pickers.colors.saveFn = function(e, text) {
                 $aur.globals.user.addColor(text.val(), self.color.dat, self.color.type);
                 $aur.globals.user.saveColors();
+                this.fillUserSection();
                 return true;
             };
 

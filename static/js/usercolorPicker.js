@@ -1,7 +1,7 @@
 /*global $aur, $*/
 
 (function($aur) {
-    function createPanels(count, titles) {
+    function createPanels(count, titles, paddingless) {
         var arr = [];
 
         for(var i = 0; i < count; i++) {
@@ -14,7 +14,7 @@
             );
             /* Body */
             $("<div/>", {"class": "panel-collapse collapse in"}).append(
-                $("<div/>", {"class":"panel-body"})
+                $("<div/>", {"class":"panel-body" + ((paddingless) ? " paddingless" : "")  })
             ).appendTo(jControl);
 
             arr.push(jControl);
@@ -56,7 +56,7 @@
         render: function() {
             this.jControl = $("<div/>", {"class":"panel-group"});
             
-            var panels = createPanels(2, ["Recently used", "User Color"]);
+            var panels = createPanels(2, ["Recently used", "User Color"], true);
 
             //this.jRecent = panels[0].appendTo(this.jControl);
             this.jUser = panels[1].appendTo(this.jControl);
@@ -84,7 +84,7 @@
             var container = $(".panel-body", this.jUser);
             container.empty();
 
-            var table = $("<table/>", { "class": "table table-striped" });
+            var table = $("<table/>", { "class": "table table-striped class", style: "margin: 0;" });
 
             for(var n in colors) {
                 if(colors.hasOwnProperty(n)) {
@@ -94,11 +94,27 @@
                             $("<td/>").append(self.colorBulb(n, colors[n]))
                         ).append(
                             $("<td/>").text(n)
+                        ).append(
+                             $("<td/>").append(this.removeIcon(n))
                         );
+
                 }
             }
             
             container.append(table);
+        },
+        removeIcon: function(name) {
+            var self = this;
+            var el = $("<span/>", 
+                { "class": "glyphicon glyphicon-remove clickable" }
+            ).click(function(e) {
+                e.preventDefault();
+
+                delete $aur.globals.user.colors[name];
+                $aur.globals.user.saveColors();
+                self.fillUserSection();
+            });
+            return el;
         },
         colorBulb: function(name, color) {
             var self = this;
