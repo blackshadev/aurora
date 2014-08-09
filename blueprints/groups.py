@@ -8,35 +8,8 @@ def blueprint(hue, Db):
     def gGroups():
         res, cols = Db.execResult("select * from groups")
         
-        lights = hue.getLights(True)
-        cols.append("state")
-        cols.append("color")
-
-        resp = [cols]
-        idx = cols.index("lights")
-        for row in res:
-            state = lights[0][1]["state"]["on"]
-            color = lights[0][1]["state"]["rgb"]
-
-            r = list(row)
-            lArr = []
-
-            for lId in Json.loads(r[idx]):
-                # Check if all states and colors are the same
-                if state != lights[lId][1]["state"]["on"]:
-                    state = None
-                if color != lights[lId][1]["state"]["rgb"]:
-                    color = None
-                lArr.append(lights[lId])
-
-            r[idx] = lArr
-
-            # Add color and state
-            r.append(state)
-            r.append(color)
-
-            resp.append(r)
-
+        resp = [[row[0], { "name": row[1], "lights": Json.loads(row[2])}]for row in res]
+        
         return Response(Json.dumps(resp), mimetype="appliction/json")
 
     @bp.route("/api/groups/<gId>", methods=["PUT"])

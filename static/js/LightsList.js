@@ -140,7 +140,7 @@
         }
     ];
 
-    $aur.LightsList = $aur.List.extend({
+    $aur.GroupsList = $aur.List.extend({
         objectClassType: $aur.Light,
         ndxField: "id",
         displaySelector: "", // selector of the tableBody which displays this all

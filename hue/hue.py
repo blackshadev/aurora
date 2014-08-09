@@ -93,15 +93,12 @@ class Hue(object):
         return groups.toList()
     def actionGroup(self, gId, action):
         resp = self.__send('PUT', '/api/%s/groups/%s/action' % (self.uid, gId), Json.dumps(action))
-        print resp
         return resp
     def getSettings(self):
         return self.__send('GET', '/api/%s/config' % self.uid)
     def setSettings(self, data):
-        print data
         res = self.__send('PUT', '/api/%s/config' % self.uid, \
             Json.dumps(data))
-        print res
         return res
     def getLight(self, lId):
         return self.__send('GET', '/api/%s/lights/%s' % (self.uid, lId))

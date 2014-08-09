@@ -45,7 +45,6 @@ def blueprint(hue):
                 obj["bri"] = json["color"][2]
 
             resp = hue.setLightState(lId, obj)
-            print resp
 
         return Response(Json.dumps(resp), mimetype="appliction/json")
     @bp.route("/api/lights/<lId>/name", methods=['PUT'])

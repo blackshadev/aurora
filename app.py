@@ -34,7 +34,7 @@ Users.Db = Db
 config = Config("aurora.cfg")
 
 # setup hue
-hue = Hue(ip="192.168.2.13")
+hue = Hue(ip="192.168.2.13", logLevel=2)
 hue.setConfig(config.section("hue")) 
 
 #setup flask
