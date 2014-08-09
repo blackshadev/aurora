@@ -4,7 +4,8 @@
     $aur.ColorPickers = $aur.Object.extend({
         lights: null,
         groups: null,
-        light: null,
+        light: null, // active light
+        group: null, // active group
         jControl: null,
         pickers: null,
         jPicker: null,
@@ -41,11 +42,32 @@
         },
         setLight: function(light) {
             this.light = light;
+            this.group = null;
+
             var selected = this.pickers.xy.selected;
             var xy = [selected[0], selected[1]];
             var bri = selected[2];
 
             if(light !== undefined) {
+                xy = light.state.xy;
+                bri = light.state.bri / 255;
+            }
+
+            this.pickers.xy.selected = [xy[0], xy[1], bri];
+            this.color = { "type": "xy", "dat": this.pickers.xy.selected};
+            this.pickers.xy.draw();
+        },
+        setGroup: function(group) {
+            this.light = null;
+            this.group = group;
+
+            // old values
+            var selected = this.pickers.xy.selected;
+            var xy = [selected[0], selected[1]];
+            var bri = selected[2];
+
+            // set to new values
+            if(group !== undefined) {
                 xy = light[1].state.xy;
                 bri = light[1].state.bri / 255;
             }
@@ -53,6 +75,7 @@
             this.pickers.xy.selected = [xy[0], xy[1], bri];
             this.color = { "type": "xy", "dat": this.pickers.xy.selected};
             this.pickers.xy.draw();
+
         },
         createXYPicker: function() {
             var self = this;
@@ -77,6 +100,9 @@
                 var bri = Math.round(xybri[2] * 255);
 
                 self.setColor({ type:"xy", dat: [xybri[0], xybri[1], bri]});
+
+                if(self.light)
+                    self.light.refreshDisplay();
             };
             this.pickers.xy.setColor = function(color, doSelect, doDraw) {
                 doSelect = doSelect || true;

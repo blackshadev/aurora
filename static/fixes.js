@@ -16,3 +16,11 @@ $.fn.serializeObject = function() {
 
     return o;
 }
+
+Object.keys = function(o) {
+    var a = [];
+    for(var k in o) {
+        if(o.hasOwnProperty(k)) a.push(k);
+    }
+    return a;
+}

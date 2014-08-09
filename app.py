@@ -1,12 +1,17 @@
 from flask import Flask, Blueprint, render_template, url_for
 from flask import request, current_app, session, redirect, Response
 from flask_bootstrap import Bootstrap
-import atexit
+from multiprocessing import Process
+import sys, signal
 import json as Json
+
 #own
 from hue.hue import Hue
 from config import Config
 from user import User, Users
+from db import Psycopg2Db
+from scheduler import Scheduler
+
 #blueprints
 import blueprints.views as views
 import blueprints.lights as lights
@@ -14,6 +19,16 @@ import blueprints.auth as auth
 import blueprints.user as user
 import blueprints.settings as settings
 import blueprints.groups as groups
+import blueprints.scenes as scenes
+import blueprints.uni as uni
+
+#db
+db_host = "localhost"
+db_user = "aurora"
+db_db = "aurora"
+
+Db = Psycopg2Db(db_host, db_db, db_user)
+Users.Db = Db
 
 #config file
 config = Config("aurora.cfg")
@@ -33,10 +48,14 @@ app.register_blueprint(user.blueprint(Users))
 app.register_blueprint(views.blueprint(hue))
 app.register_blueprint(settings.blueprint(hue))
 app.register_blueprint(lights.blueprint(hue))
-app.register_blueprint(groups.blueprint(hue))
+app.register_blueprint(groups.blueprint(hue, Db))
+app.register_blueprint(scenes.blueprint(hue, Db))
+app.register_blueprint(uni.blueprint(hue, Db))
+
+
 
 session_required = ["views"]
-no_sign_required = ["auth"]
+no_sign_required = ["auth", "uni"]
 
 @app.before_request
 def before_request():
@@ -62,12 +81,17 @@ def before_request():
 def colorPicker():
     return render_template("colorPicker.html")
 
-def onclose():
+def stop(signum, frame):
     print "closing"
     hue.close()
     config.save()
+    sys.exit(0)
+
+def run_server():
+    hue.start()
+    #atexit.register(onclose)
+    app.run(debug=True, use_reloader=False, port=8080, host='0.0.0.0')
 
 if __name__ == '__main__':
-    hue.start()
-    atexit.register(onclose)
-    app.run(debug=True, port=8080, host='0.0.0.0')
+    signal.signal(signal.SIGINT, stop)
+    run_server()

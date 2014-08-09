@@ -6,18 +6,26 @@ def blueprint(hue):
 
     @views.route('/')
     def index():
-        return render_template("index.html", user=request.user)
+        return render_template("index.html")
 
     @views.route('/groups')
     def groups():
-        return render_template("async/groups.html", user=request.user)
+        return render_template("async/groups.html")
 
     @views.route('/lights')
     def lights():
-        return render_template("async/lights.html", user=request.user)
+        return render_template("async/lights.html")
+
+    @views.route('/scenes')
+    def scenes():
+        return render_template("async/scenes.html")
 
     @views.route('/settings')
     def settings():
-        return render_template("async/settings.html", user=request.user)
+        return render_template("async/settings.html")
+
+    @views.route('/debug')
+    def debug():
+        return render_template("async/debug.html")
 
     return views

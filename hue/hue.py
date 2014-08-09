@@ -4,6 +4,8 @@ import json as Json
 import ConfigParser
 import time
 from lights import *
+from LittleDev.UniversalRequest import UniversalRequests
+
 """
 LogLevel:
 0: minor notice (message)
@@ -31,7 +33,8 @@ class Hue(object):
 
         self.uid = self.config.get("username")
         print "found uid %s" % self.uid
-
+    def url(self):
+        return "/api/" + self.uid + "/"
     def __send(self, method="GET", url="/", body=""):
         self.log("sending to hue on %s (%s): %s" % (url, method, body), 0)
         body, status, headers = self.sender.request(body=body, \
@@ -46,7 +49,7 @@ class Hue(object):
             self.isLinked = True
             return True
         elif("lights" not in resp and "error" in resp[0] \
-            and (resp[0]["error"]["type"] == 7 or resp[0]["error"]["type"] == 101) ):
+            and (resp[0]["error"]["type"] in [1, 101, 7] ) ):
             self.isLinked = self.link()
         else:
             self.isLinked = True
@@ -71,6 +74,9 @@ class Hue(object):
         return False
     def getAllData(self):
         return self.__send("GET", "/api/%s" % self.uid);
+    def universalRequest(self, json):
+        req = UniversalRequests(self, json)
+        req.sendAll()
     def getLights(self, addRgb = False):
         lights = LightList(self)
 
@@ -114,6 +120,7 @@ class Hue(object):
     def close(self):
         self.log("Closing", 1)
         self.sender.close()
+        UniversalRequests.pool.join()
     def log(self, msg, level, tag="Hue"):
         if level >= self.logLevel:
             print "%s [%s]: %s" % (time.strftime("%Y-%m-%d %H:%M:%S") , tag, msg)
@@ -150,4 +157,9 @@ class OpenSender(Sender):
         return Sender.parseRequest(self.conn)
     def close(self):
         self.conn.close()
+
+
+
+
+
 

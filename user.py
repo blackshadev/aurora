@@ -1,4 +1,4 @@
-import psycopg2
+
 import hashlib
 from flask import session, redirect, url_for, Flask, Blueprint, render_template, Response, request
 import json as Json
@@ -6,34 +6,23 @@ import hmac
 import copy
 
 class Users:
+    Db = None
     db = "aurora"
     user = "aurora"
     @staticmethod
     def auth(username, pwd):
-        conn = psycopg2.connect(database=Users.db, user=Users.user)
-        cur = conn.cursor()
-        passhash = hashlib.sha256(pwd).hexdigest()
-        
-        cur.callproc("authUser", [username, passhash])
-        res = cur.fetchone()
-        cur.close()
-        conn.commit()
-        conn.close()
+        res, col = Users.Db.execProc("authUser", [username, pwd])
 
         user = User()
-        user.fromRecord(res)
+        
+        if len(res) > 0:
+            user.fromRecord(res[0])
 
         return user
     @staticmethod
     def getRecord(session):
-        conn = psycopg2.connect(database=Users.db, user=Users.user)
-        cur = conn.cursor()
-        cur.callproc("gUser_Session", [session])
-        res = cur.fetchone()
-        cur.close()
-        conn.commit()
-        conn.close()
-        return res
+        res, col = Users.Db.execProc("gUser_Session", [session])
+        return res[0]
     @staticmethod
     def getUser(sessid):
         return User(sessid)
@@ -44,12 +33,7 @@ class Users:
     @staticmethod
     def logout(sessid, secret):
         print "loging out: %s, %s" % (sessid, secret)
-        conn = psycopg2.connect(database=Users.db, user=Users.user)
-        cur = conn.cursor()
-        cur.callproc("rUser_Session", [sessid, secret])
-        cur.close()
-        conn.commit()
-        conn.close()
+        Users.Db.execProcNon(rUser_Session, [sessid, secret])
     @staticmethod
     def validateRequest(json):
         if "sessid" not in json or "signature" not in json:

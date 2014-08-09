@@ -51,6 +51,9 @@
             pars.data = {name:name};
 
             $aur.apiCall(pars);
+        },
+        onRefresh: function(dat) {
+            $aur.lights.setData(dat)
         }
     });
 

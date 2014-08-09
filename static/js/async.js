@@ -128,7 +128,14 @@
             $aur.apiCall(pars);
     };
 
+    function hashPass(pass) {
+        return CryptoJS.SHA256(pass).toString();
+    }
+
     $aur.login = function(fData, err, succ) {
+        if(fData.pass)
+            fData.pass = hashPass(fData.pass);
+
         var pars = {
             type: "POST",
             url: "/login",
@@ -176,6 +183,7 @@
     setUser(function(usr) { 
         user = usr;
         $aur.globals.user = usr;
+        $("#usernameLabel").text(usr.name);
     });
 
     $aur.getUser = function() { return user; };
@@ -209,7 +217,8 @@
                             function() { self.refresh(); }, 
                             self.syncTime);
 
-                self.onRefresh.apply(this, arguments);
+                if(self.onRefresh)
+                    self.onRefresh.apply(this, arguments);
             };
             pars.error = function() {
                 self.onError.apply(this, arguments);

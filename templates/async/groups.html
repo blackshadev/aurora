@@ -1,43 +1,29 @@
 <table class="table table-striped">
     <thead>
-       <tr><td>#</td><td>Name</td></tr> 
+       <tr><td>#</td><td>Name</td><td></td><td></td></tr> 
     </thead>
-    <tbody>
-        <tr data-toggle="collapse" data-target="#group_1_l">
-            <td>0</td><td>Test Groep</td>
-        </tr>
-        <tr class="hiddenRow"><td colspan="2">
-            <div id="group_1_l" class="accordian-body collapse">
-                <table class="table table-striped">
-                    <thead>
-                        <tr><td>#</td><td>Name</td><td>State</td><td>Color</td></tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>1</td><td>Test lamp</td><td>1</td><td>0</td></tr>
-                        <tr><td>2</td><td>Test lamp 2</td><td>1</td><td>0</td></tr>
-                        <tr><td>3</td><td>Test lamp 3</td><td>1</td><td>0</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </td>
-        </tr>
-        <tr data-toggle="collapse" data-target="#group_2_l">
-            <td>1</td><td>Empty test group</td>
-        </tr>
-        <tr class="hiddenRow"><td colspan="2">
-            <div id="group_2_l" class="accordian-body collapse">
-                <table class="table table-striped">
-                        <tr><td>#</td><td>Name</td><td>State</td><td>Color</td></tr> 
-                </table>
-            </div>
-        </td></tr>
+    <tbody id="groupBody">
     </tbody>
 </table>
 
 <script type="text/javascript">
-    var groups = new aur.Groups(refresh);
+    var groups = $aur.globals.groups;
+    groups.onRefresh = refreshGroups;
+    groups.setAsync(true);
+    $aur.globals.lights.onRefresh = function() {
+        groups.refresh();
+    };
 
-    function refresh(data, th) {
-        console.log(data);
+
+    function refreshGroups(data, th) {
+        var table = $("#groupBody");
+        table.empty();
+
+        for(var i = 1; i < data.length; i++) {
+            table.append(groups.newRow(data[i], i));
+        }
     }
+
+
+
 </script>

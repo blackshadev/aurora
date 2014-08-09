@@ -10,7 +10,7 @@ create table users (
 
 insert into users (username, password, name, settings, colors) values (
     'admin', 
-    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 
+    '9aebe161a1c31642e296d175fc8db18586edddf85f2371d19fa35de887cb45cd', 
     'Vincent', 
     '{}', 
     '{}'

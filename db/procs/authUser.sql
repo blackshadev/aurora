@@ -1,8 +1,8 @@
-drop function authUser
- (
-    in  _username    varchar(64)
-  , in  _passHash    varchar(256)
- );
+-- drop function authUser
+--  (
+--     in  _username    varchar(64)
+--   , in  _passHash    varchar(256)
+--  );
 create or replace function authUser
  (
     in  _username    varchar(64)

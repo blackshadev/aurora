@@ -1,10 +1,9 @@
-{% set iconOn = "glyphicon glyphicon-certificate" %}
-{% set iconOff = "glyphicon glyphicon-record" %}
+
 
   <h1>Lights</h1>
   <table id="lightsTable" class="table table-striped">
     <thead>
-      <tr><td>#</td><td>Name</td><td id="allState"><span class="{{iconOn}} clickable"></span>/<span class="{{iconOff}} clickable"></span></td><td id="allColor" class="clickable">Color</td></tr>
+      <tr><td>#</td><td>Name</td><td id="allState"><span class="glyphicon glyphicon-certificate clickable"></span>/<span class="glyphicon glyphicon-record clickable"></span></td><td id="allColor" class="clickable">Color</td></tr>
     </thead>
     <tbody>
       
@@ -18,103 +17,7 @@
   var groups = $aur.globals.groups;
   var picker = $aur.globals.picker;
 
-  lights.onRefresh = refreshLights;
-  groups.onRefresh = function() { $aur.globals.lights.refresh(); };
-
-  lights.setAsync(true);
-
-  var form = {
-    state: function(light) {
-      var icon = light[1].state.on ? "{{ iconOn }}" : "{{ iconOff }}";
-      return $("<td/>").append(
-        $("<span/>", { "class": icon + " clickable" })
-      ).click(function(e) {
-        e.preventDefault();
-        lights.setState(light[0], !light[1].state.on);
-      }); 
-      
-    },
-    color: function(light) {
-      var el = $("<td/>", { "class": "clickable" }).append(
-        $("<span/>", { "class": "color",
-          "data-toggle": "modal", "data-target": "#colorpicker" }).css(
-          "background-color", light[1].state.rgb)
-        );
-        el.click(function() {
-          picker.setLight(light);
-        });
-      return el;
-    },
-    name: function(light) {
-      var el = $("<td/>", {"class": "clickable"}).text(light[1].name);
-      el.click(function(e) {
-        e.stopImmediatePropagation();
-        var w = el.width();
-        el.width(w);
-
-        var input = $("<input/>", {"type":"text", "value": light[1].name});
-
-        var changeName = function() {
-          var value = input.val();
-          el.text(value);
-          el.css("width", "auto");
-
-          lights.setName(light[0], value);
-
-          $(document).off("click.aurora_l" + light[0]);
-        };
-
-        input.click(function(e) { e.stopImmediatePropagation(); });
-        input.keypress(function(e) { 
-          var key = e.which || e.keyCode;
-
-          if(key === 13) {
-            e.stopImmediatePropagation(); e.preventDefault();
-            changeName();
-          }
-        });
-
-        el.empty().append(input);
-
-        $(document).on("click.aurora_l" + light[0], changeName);
-
-      });
-
-      return el;
-    }
-  };
-
-  $("#allState").click(function(e) {
-    var state = (e.target.className.indexOf("{{iconOn}}")) > -1 ? true : false;
-    groups.action(0, {state: state});
-  });
-  $("#allColor").click(function() {
-      picker.setLight(undefined);
-      $("#colorpicker").modal("show");
-  });
-
-  function refreshLights(data) {
-    var fill = [form.name, form.state, form.color ];
-
-    var body = $("<tbody/>");
-
-    for(var i = 0; i < data.length; i++) {
-        var light = data[i];
-        var row = $("<tr/>");
-        row.append($("<td/>").text(data[i][0]));
-
-        for(var y = 0; y < fill.length; y++ ) {
-          var prop = fill[y];
-          if(typeof(prop) === "string")
-            row.append($("<td/>").text(light[1][prop]));
-          else
-            row.append(prop(light));
-        }
-        row.appendTo(body);
-    }
-
-    $("#lightsTable tbody").replaceWith(body);
-
-  }
+  $aur.lights.setDisplay("#lightsTable tbody");
+  
 })($aur);
 </script>

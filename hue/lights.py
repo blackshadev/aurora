@@ -13,6 +13,7 @@ class LightList(object):
         if data == None:
             data = hue.getAllData()
         dLights = data["lights"]
+        print dLights
         aLights = sorted(dLights.iteritems(), key=operator.itemgetter(0))
         if lightsFilter != None:
             aLights = [x for x in aLights if x[0] in lightsFilter ]

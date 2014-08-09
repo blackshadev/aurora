@@ -1,4 +1,4 @@
-drop type user_rec cascade;
+--drop type user_rec cascade;
 create TYPE user_rec as 
 (user_id integer,
  user_name varchar,

@@ -7,18 +7,18 @@
 
 {% block scripts %}
 {{super()}}
+
 <script src="{{url_for('static', filename='js/lights.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/groups.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/xycolorPicker.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/usercolorPicker.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/colorPickers.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/colorConvert.js')}}" type="text/javascript"></script>
+<script src="{{url_for('static', filename='js/ObjectList.js')}}" type="text/javascript"></script>
 <script type="text/javascript">
     /*globals $aur*/
     var els = $("#mainNav a");
-    console.log(els);
-    els.ready(function() {
-        console.log("ready");
-    });
+    
     $("nav.navbar ul.nav a").click(function(e) {
         e.preventDefault();
         var container = $("div#container");
@@ -36,6 +36,8 @@
     $aur.globals.groups = new $aur.Groups({ autoSync: false });
     $aur.globals.picker = new $aur.ColorPickers($("#colorpicker .modal-body"));
 
+    $aur.lights = new $aur.LightsList();
+    $aur.lights.refreshEvery(10000);
 </script>
 {% endblock %}
 

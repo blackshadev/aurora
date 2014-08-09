@@ -1,0 +1,18 @@
+<h1>Scenes</h1>
+<table id="sceneTable" class="table table-striped">
+    <thead>
+        <tr><td>#</td><td>Name</td><td>State</td><td></td><td></td></tr>
+    </thead>
+</table>
+
+<script type="text/javascript">
+/*globals $aur*/
+var pars = {
+    url: "api/scenes",
+    method: "POST",
+    success: function(data) {
+        console.log(data);
+    }
+};
+$aur.apiCall(pars);
+</script>

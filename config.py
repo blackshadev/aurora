@@ -27,3 +27,5 @@ class ConfigSection:
 		if(self.__configRaw.has_option(self.section, option)):
 			return self.__configRaw.get(self.section, option)
 		return None
+	def save(self):
+		self.config.save()

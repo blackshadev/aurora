@@ -8,4 +8,9 @@ It is stil basic, but it will include:
 
 Next up:
   - Groups
-  - Recently used colors and favorite colors
+  - Scenes
+
+requirements:
+ - Flask_Bootstrap
+ - Psycopg2Db
+ - httplib
