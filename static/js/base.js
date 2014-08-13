@@ -15,7 +15,6 @@ var $aur = {};
     };
 
     $aur.Object.prototype.inherited = function () {
-        console.log(this);
         return arguments.callee.caller.$inherited;
     };
 
@@ -48,7 +47,7 @@ var $aur = {};
     };
 
     
-
+    var iListCounter = 0;
     $aur.List = $aur.Object.extend({
         count: 0,
         items: null,
@@ -106,8 +105,8 @@ var $aur = {};
         },
         add: function (obj, /* opt */sIndex) {
             if (!sIndex) {
-                if (this.ndxField && obj[this.ndxField] !== undefined && obj[this.ndxField] !== null)
-                    sIndex = obj[this.ndxField]; else { sIndex = "LI#" + iListCounter++; obj.sId = obj.sId || sIndex; }
+                if (this.ndxField && obj[this.ndxField] !== undefined && obj[this.ndxField] !== null) {
+                    sIndex = obj[this.ndxField]; } else { sIndex = "LI#" + iListCounter++; obj.sId = obj.sId || sIndex; }
             }
             var ok = obj instanceof this.objectClassType;
             if (!ok) { errmsg(this.className + ".add('" + sIndex + "', obj) expects obj of type " + this.objectClassType.prototype.className); }
@@ -225,25 +224,27 @@ var $aur = {};
     });
 
     $aur.Event = $aur.Object.extend({    
-        subscriber    : null, // TObject, ie TForm
+        subscriber    : null, // Object
         eventType     : "",
         funcName      : "",
         fn            : null,
         enabled       : true,
-        create: function (subscriber, eventType, funcName) {
+        once          : false,
+        create: function (subscriber, eventType, funcName, once) {
             this.subscriber = subscriber;
             this.eventType = eventType;
             this.funcName = funcName || "onNotify";
+            this.once = !!once;
             if (typeof funcName === "function") this.fn = funcName;
             else if (subscriber[funcName] && typeof (subscriber[funcName] === "function")) this.fn = subscriber[funcName];
         }
     });
 
     $aur.Events = $aur.List.extend({
-        owner  : null, // TObject, ie TTable
-        create : function(owner) { this.owner = owner; this.objectClassType = $aur.TEvent; this.inherited().create.call(this);},
-        subscribe: function(object, eventType, funcName) {
-            var event = new $aur.Event(object, eventType, funcName);
+        owner  : null, // Object
+        objectClassType: $aur.Event,
+        subscribe: function(object, eventType, funcName, once) {
+            var event = new $aur.Event(object, eventType, funcName, once);
             this.add(event);
         },
         unsubscribe: function(object, eventType) {
@@ -255,6 +256,7 @@ var $aur = {};
             this.forEach(function(e) { 
                 if ( (e.eventType === eventType || e.eventType === "*") && e.enabled && e.fn) {
                     e.fn.call(e.subscriber, e, sender, data);
+                    if(e.once) events.remove(e);
                 }
             });
         }

@@ -49,14 +49,12 @@ def hs2rgb(values):
     C = values["bri"] / 255. * values["sat"] / 255.
     X = C * (1 - abs( ( (H / 60) % 2.) - 1.))
 
-    print (H, C, X)
 
     R, G, B = rgb_(H, C, X)
     m = values["bri"] / 255. - C
 
     res = (R + m, G + m, B + m)
     res = tuple(x * 255 for x in res)
-    print res
     return res
 
     
@@ -92,7 +90,6 @@ def ct2rgb(values):
     return ( min(max(r, 0), 255), min(max(g, 0), 255), min(max(b, 0), 255) )
 
 def hsl2hsv(values):
-    print values
     h, s, l = values
     B = (2. * l + s * (1. - abs(2. * l - 1.))) / 2.
 

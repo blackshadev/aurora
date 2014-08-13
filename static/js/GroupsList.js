@@ -1,66 +1,147 @@
 (function($aur) {
 
+    function createLghtsTable() {
+        var table = $("<table/>", { "class": "table table-striped" });
+
+        var tabh = $("<thead/>");
+        var cols = $aur.Light.displayProps;
+        for(var i = 0; i < cols.length; i++)
+            tabh.append($("<td/>").text(cols[i].caption));
+        tabh.appendTo(table);
+
+        var tabb = $("<tbody/>");
+        tabb.appendTo(table);
+
+        return [table, tabb];
+    }
+
     $aur.Group = $aur.Object.extend({
         id: -1,
         lights: null,
         name: "",
-        state: null,
-        rgb : null,
+        on: null, // Set when all lights in the group have the same on state
+        rgb : null, // Set when all lights in the group have the same color
         // display attrs
         displayEl: null, // jControl (tr)
         edit: null,
         closeFn: null, 
         create: function(obj) {
-            debugger;
+            this.lights = new $aur.LightsList();
+
+            this.raw = obj;
+            this.id = obj[0];
+            this.name = obj[1].name;
+
+            this.setLights();
+            this.checkGrouping();
+            $aur.lights.events.subscribe(this, "DataChanged", "checkGrouping")
+        },
+        checkGrouping: function() {
+            if(this.lights.count < 1) return;
+
+            var rgb = this.lights.itemsArray[0].rgb;
+            var on  = this.lights.itemsArray[0].on;
+
+            this.lights.forEachB(function(e) {
+                if(rgb !== e.rgb) rgb = null;
+                if(on !== e.on) on = null;
+                if(on === null && rgb === null) return true; // breaks
+            });
+
+            var isChanged = !(this.rgb === rgb && this.on === on);
+
+            this.rgb = rgb;
+            this.on  = on;
+
+            if(isChanged)
+                this.refreshDisplay();
+        },
+        waitForLights: function() {
+            console.log("Sub to lights event")
+            $aur.lights.events.subscribe(this, "ListChanged", "setLights");
+        },
+        setLights: function() {
+            var arr = this.raw[1].lights;
+            var l = arr.length;
+            for(var i = 0; i < l; i++) {
+                var lght = $aur.lights.items[arr[i]];
+                if(!lght) { this.waitForLights(); return; }
+
+                this.lights.add(lght);
+
+                if(this.on !== lght.on) this.on = null;
+                if(this.rgb !== lght.rgb) this.rgb = null;
+            }
+
+            this.refreshDisplay();
         },
         setData: function(dat) {
             var isChanged = false;
-            var old = { name: this.name, on: this.on, rgb: this.rgb };
+            var old = { name: this.name, lights: this.raw[1].lights };
 
-            debugger; 
-
-            return;
+            this.raw = dat;
             this.name = dat[1].name;
-            this.on = dat[1].state.on;
-            this.state = dat[1].state;
-            this.rgb = $aur.ConvertColor(this);
+            var lights = dat[1].lights;
+
+            var arrSame = (lights.length === old.lights.length);
+            for(var i = 0; arrSame && i < lights.length; i++)
+                if(old.lights[i] !== lights[i]) { arrSame = false; break; }
+
+            if(!arrSame) this.setLights();
 
             // check for changes
-            for(var k in old) {
-                if(this[k] !== old[k]) {
-                    isChanged = true; break;
-                }
-            }
+            isChanged = !(this.name === old.name && arrSame);
 
             if(isChanged && !this.edit)
                 this.refreshDisplay();
+            return isChanged;
         },
         toHTML: function() {
-            this.displayEl = $("<tr/>");
+            var groupRow = $("<tr/>", { 
+                "class": "clickable", "data-toggle": "collapse", 
+                "data-target": "#lght_" + this.id
+            });
+
+            var lghtTd = $("<td/>", { colspan: $aur.Group.displayProps.length});
+            var lghtsRow = $("<tr/>").append(lghtTd);
+
+            var ltab = createLghtsTable();
+            this.lightsBody = ltab[1];
+            this.tableContainer = $("<div/>", { 
+                "class": "collapse", id: "lght_" + this.id 
+            }).append(ltab[0]).appendTo(lghtTd);
             
+            this.lights.forEach(function(e) {
+                ltab[1].append(e.toHTML());
+            });
+
+            this.displayEl = [
+                groupRow, lghtsRow
+            ];
+            var self = this;
+
             this.refreshDisplay();
 
             return this.displayEl;
         },
-        getRGB: function() {
-            return $aur.ConvertColor(this);
-        },
         // update the display element
         refreshDisplay: function() {
             if(!this.displayEl || this.edit) return;
-            this.displayEl.empty();
+            this.displayEl[0].empty();
 
-            for(var i = 0; i < $aur.Light.displayProps.length; i++) {
-                var prop = $aur.Light.displayProps[i];
-                var td = $("<td/>");
+            var td;
+            for(var i = 0; i < $aur.Group.displayProps.length; i++) {
+                var prop = $aur.Group.displayProps[i];
+                td = $("<td/>");
                 
                 if(prop.fn)
                     prop.fn.call(this, td, this[prop.name]);
                 else
                     td.text(this[prop.name]);
 
-                this.displayEl.append(td);
+                this.displayEl[0].append(td);
             }
+
 
         },
         showEdit: function(td) {
@@ -90,7 +171,7 @@
             });
         }
     });
-    $aur.Light.displayProps = [
+    $aur.Group.displayProps = [
         { name: "id", caption: "#" },
         { 
             name: "name", caption: "Name", 
@@ -98,7 +179,10 @@
                 var self = this;
                 td.text(name);
                 td.addClass("clickable");
-                td.click(function() { self.showEdit(this); });
+                td.click(function(e) {
+                    e.stopImmediatePropagation();
+                    self.showEdit(this); 
+                });
             } 
         }, {
             name: "on", caption: "State",
@@ -108,8 +192,9 @@
                     : "glyphicon glyphicon-record";
                 var self = this;
                 var span = $("<span/>", {"class": "clickable " + icon});
-                span.click(function() { 
-                    $aur.globals.lights.setState(self.id, !self.on); 
+                span.click(function(e) { e
+                    e.stopImmediatePropagation();
+                    $aur.globals.groups.setState(self.id, !self.on); 
                 });
                 td.append(span);
             }
@@ -117,13 +202,14 @@
             name: "state", caption: "Color",
             fn: function(td, state) {
                 var self = this;
-                var color = this.getRGB();
+                var color = this.rgb;
                 td.addClass("clickable")
                   .append(
                     $("<span/>", { 
                         "class": "color",
                         "data-toggle": "modal", "data-target": "#colorpicker" 
                     }).css("background-color", color).click(function(e) {
+                        e.stopImmediatePropagation();
                         $aur.globals.picker.setLight(self);
                     })
 
@@ -133,58 +219,10 @@
         }
     ];
 
-    $aur.LightsList = $aur.List.extend({
+    $aur.GroupsList = $aur.ObjectList.extend({
         objectClassType: $aur.Group,
-        ndxField: "id",
         displaySelector: "", // selector of the tableBody which displays this all
-        timer: -1,
-        refresh: function() {
-            var self = this;
-
-            var pars = {
-                url: "api/groups",
-                type: "POST",
-                success: function(dat) {
-                    self.setData(dat);
-                    if(self.timer > -1)
-                        window.setTimeout(function() { self.refresh() }, self.timer);
-                }
-            };
-
-            $aur.apiCall(pars);
-        },
-        setData: function(arr) {
-            
-
-            var l = arr.length;
-            for(var i = 0; i < l; i++) {
-                var item = this.items[arr[i][0]];
-                if(!item)
-                    this.add(new this.objectClassType(arr[i]));
-                else
-                    item.setData(arr[i]);
-            }
-
-            this.doDisplay();
-        },
-        refreshEvery: function(time) {
-            this.timer = time;
-            var self = this;
-            self.refresh();
-        },
-        setDisplay: function(selector) {
-            this.displaySelector = selector;
-            this.doDisplay();
-        },
-        // add new lights to the display selector
-        doDisplay: function() {
-            if(this.displaySelector) {
-                var ctrl = $(this.displaySelector);
-                this.forEach(function(e) {
-                    if(!e.displayEl) ctrl.append(e.toHTML());
-                });
-            }
-        }
+        url: "api/groups"
     });
 
 })($aur);

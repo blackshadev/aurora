@@ -29,15 +29,18 @@
         
     };
      
-    $aur.ConvertColor.hs_rgb = function(l) {
-        var a = l.state.hue,
-            b = l.state.sat,
-            c = l.raw.modelid;
+    $aur.ConvertColor.hs_rgb = function(lght) {
+        var a = lght.state.hue,
+            b = lght.state.sat,
+            c = lght.raw[1].modelid;
 
         var d = b / 254,
             e = a >> 8 & 255,
             f = 255 & a,
-            g = "LLC";
+            g = "LLC",
+            p = $aur.Const.PhiHSxyOffset,
+            q = $aur.Const.PhiHSx,
+            r = $aur.Const.PhiHSy;
 
         (0 === c.indexOf("LCT") || 0 === c.indexOf("LLM")) && (g = "LCT");
         var h = e + 1;
@@ -48,15 +51,18 @@
             l = p[g].y - j;
         i += k * (1 - d), j += l * (1 - d);
         
-        l.state.xy = [i,j];
+        lght.state.xy = [i,j];
 
-        return $aur.ConvertColor.xy_rgb(l)
+        return $aur.ConvertColor.xy_rgb(lght)
     };
-    $aur.ConvertColor.ct_rgb = function(l) {
-        var a = l.state.ct, b = 0, s = $aur.Const.PhiCTColor, t = $aur.Const.PhiCTTemp;
+    $aur.ConvertColor.ct_rgb = function(lght) {
+        var a = lght.state.ct, b = 0, 
+            s = $aur.Const.PhiCTColor, 
+            t = $aur.Const.PhiCTTemp;
+            
         b = Math.floor((a - 128 + 1) / 2), 0 > b ? b = 0 : b >= s.length && (b = s.length - 1);
-        l.state.xy = [s[b] / 65535, t[b] / 65535 ];
-        return $aur.ConvertColor.xy_rgb(l)
+        lght.state.xy = [s[b] / 65535, t[b] / 65535 ];
+        return $aur.ConvertColor.xy_rgb(lght)
     };
 
 

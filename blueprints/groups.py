@@ -4,30 +4,28 @@ import json as Json
 def blueprint(hue, Db):
     bp = Blueprint("groups", __name__, template_folder="templates")
 
+    group_lights = {}
+
     @bp.route("/api/groups", methods=["POST"])
     def gGroups():
         res, cols = Db.execResult("select * from groups")
         
-        resp = [[row[0], { "name": row[1], "lights": Json.loads(row[2])}]for row in res]
+        resp = []
+        for row in res:
+            lghts = Json.loads(row[2])
+            resp.append([row[0], { "name": row[1], "lights": lghts}])
+            group_lights[row[0]] = lghts
         
         return Response(Json.dumps(resp), mimetype="appliction/json")
 
-    @bp.route("/api/groups/<gId>", methods=["PUT"])
+    @bp.route("/api/groups/<gId>/state", methods=["PUT"])
     def aGroup(gId):
-        res, cols = Db.execResult("select * from groups where id=%s ", gId)
+        lghts = group_lights[int(gId)]
+
+        state = request.user_data
+        hue.universalRequest({ "lights": lghts, "body": request.user_data })
         
-        json = request.user_data
-        if "state" in json:
-            json["on"] = json["state"]
-            del json["state"]
-
-            reqJson = {
-                "lights": Json.loads(res[0][2]),
-                "body": json
-            }
-            print reqJson
-
-        resp = hue.universalRequest(reqJson)
+        resp = {}
         return Response(Json.dumps(resp), mimetype="appliction/json")
 
     return bp

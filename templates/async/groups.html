@@ -7,23 +7,5 @@
 </table>
 
 <script type="text/javascript">
-    var groups = $aur.globals.groups;
-    groups.onRefresh = refreshGroups;
-    groups.setAsync(true);
-    $aur.globals.lights.onRefresh = function() {
-        groups.refresh();
-    };
-
-
-    function refreshGroups(data, th) {
-        var table = $("#groupBody");
-        table.empty();
-
-        for(var i = 1; i < data.length; i++) {
-            table.append(groups.newRow(data[i], i));
-        }
-    }
-
-
-
+    $aur.groups.setDisplay("#groupBody");
 </script>

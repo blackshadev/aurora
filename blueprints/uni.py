@@ -19,8 +19,8 @@ def blueprint(hue, Db):
     """
     @bp.route("/api", methods=["PUT"])
     def universal():
-        req = hue.universalRequests(request.get_json())
-        req.sendAll()
+        hue.universalRequest(request.get_json())
+        
         return Response(Json.dumps({}), mimetype="appliction/json")
 
 

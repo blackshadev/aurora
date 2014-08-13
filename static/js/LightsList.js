@@ -41,6 +41,7 @@
 
             if(isChanged && !this.edit)
                 this.refreshDisplay();
+            return isChanged;
         },
         toHTML: function() {
             this.displayEl = $("<tr/>");
@@ -140,58 +141,9 @@
         }
     ];
 
-    $aur.GroupsList = $aur.List.extend({
+    $aur.LightsList = $aur.ObjectList.extend({
         objectClassType: $aur.Light,
-        ndxField: "id",
-        displaySelector: "", // selector of the tableBody which displays this all
-        timer: -1,
-        refresh: function() {
-            var self = this;
-
-            var pars = {
-                url: "api/lights",
-                type: "POST",
-                success: function(dat) {
-                    self.setData(dat);
-                    if(self.timer > -1)
-                        window.setTimeout(function() { self.refresh() }, self.timer);
-                }
-            };
-
-            $aur.apiCall(pars);
-        },
-        setData: function(arr) {
-            
-
-            var l = arr.length;
-            for(var i = 0; i < l; i++) {
-                var item = this.items[arr[i][0]];
-                if(!item)
-                    this.add(new this.objectClassType(arr[i]));
-                else
-                    item.setData(arr[i]);
-            }
-
-            this.doDisplay();
-        },
-        refreshEvery: function(time) {
-            this.timer = time;
-            var self = this;
-            self.refresh();
-        },
-        setDisplay: function(selector) {
-            this.displaySelector = selector;
-            this.doDisplay();
-        },
-        // add new lights to the display selector
-        doDisplay: function() {
-            if(this.displaySelector) {
-                var ctrl = $(this.displaySelector);
-                this.forEach(function(e) {
-                    if(!e.displayEl) ctrl.append(e.toHTML());
-                });
-            }
-        }
+        url: "api/lights"
     });
 
 })($aur);

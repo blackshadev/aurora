@@ -24,6 +24,20 @@
 
             $aur.apiCall(pars);
         },
+        setState: function(gId, state) {
+            var self = this;
+            if(typeof state === "boolean")
+                state = { on: state };
+            var pars = {
+                url: "/api/groups/" + gId + "/state",
+                type: "PUT",
+                data: state,
+                success: function() {
+                    $aur.lights.refresh();
+                }
+            };
+            $aur.apiCall(pars);
+        },
         setColor: function(gId, color) {
             var xy = [color[0], color[1]];
 
