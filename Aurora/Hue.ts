@@ -1,7 +1,7 @@
 ﻿import http = require("http");
 import events = require("events");
 import fs = require("fs");
-import { Light } from "./Lights";
+import { Light, Lights } from "./Lights";
 
 export enum HttpVerb {
     GET,
@@ -25,7 +25,7 @@ export class Hue extends events.EventEmitter {
     protected name: string;
     protected ip: string;
     protected userId: string;
-
+    protected lights: Lights;
 
     constructor(ip: string, name?: string) {
         super();
@@ -59,10 +59,11 @@ export class Hue extends events.EventEmitter {
         });
     }
 
-    getLights(cb: (Error, lights?: Light[]) => void) {
+    getLights(cb: (Error, lights?: Lights) => void) {
         this.request(HttpVerb.GET, "lights", undefined, (err, dat) => {
             if (err) { cb(err); return; }
-            cb(err, Light.Create(<any>dat));
+            this.lights = Lights.Create(<any>dat)
+            cb(err, this.lights);
         });
 
         
@@ -70,8 +71,9 @@ export class Hue extends events.EventEmitter {
 
     protected request(method: HttpVerb, path: string, data: Object, cb: (err?: IError | IHueError, data?: Object) => void) {
         this.raw_request(method, `/api/${this.userId}/${path}`, data, (err: IError, dat) => {
+            
             if (err) { cb(err); }
-            else if (dat[0].error) {
+            else if (dat[0] && dat[0].error) {
                 cb({
                     type: "HUE",
                     msg: dat[0].error.description,

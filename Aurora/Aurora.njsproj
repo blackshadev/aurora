@@ -37,6 +37,7 @@
     <TypeScriptCompile Include="app.ts" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <TypeScriptCompile Include="Collections.ts" />
     <TypeScriptCompile Include="ConfigManager.ts" />
     <TypeScriptCompile Include="Hue.ts" />
     <TypeScriptCompile Include="Lights.ts" />

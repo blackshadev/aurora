@@ -27,6 +27,7 @@ describe("Aurora Hue API", () => {
 
     it("GetLights", (d) => {
         let l = hue.getLights((err, dat) => {
+            console.log(dat);
             d()
         });
         

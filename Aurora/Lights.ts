@@ -1,4 +1,6 @@
-﻿interface IHueLights {
+﻿import { List } from "./Collections";
+
+interface IHueLights {
     [id: string]: IHueLight
 }
 
@@ -24,6 +26,17 @@ interface IHueState {
     reachable: boolean;
 }
 
+export class Lights extends List<Light> {
+    static Create(lights: IHueLights): Lights {
+        var list = new Lights();
+        for (var k in lights) {
+            list.add(new Light(parseInt(k), lights[k]));
+        }
+
+        return list;
+    }
+}
+
 export class Light {
     id: number;
     state: IHueState;
@@ -35,12 +48,7 @@ export class Light {
         this.state = data.state;
     }
 
-    static Create(lights: IHueLights): Light[] {
-        var arr = [];
-        for (var k in lights) {
-            arr.push(new Light(parseInt(k), lights[k]));
-        }
+    
 
-        return arr;
-    }
+
 }
