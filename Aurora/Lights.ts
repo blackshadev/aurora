@@ -1,4 +1,4 @@
-﻿import { List } from "./Collections";
+﻿import { List , extend } from "./Collections";
 import { Hue } from "./Hue";
 import { HttpVerb, IError, IHueError } from "./common";
 import { EventEmitter } from "events";
@@ -17,16 +17,16 @@ interface IHueLight {
 }
 
 interface IHueState {
-    on: boolean;
-    bri: number;
-    hue: number;
-    sat: number;
-    xy: [number, number];
-    ct: number;
-    alert: string;
-    effect: string;
-    colormode: string;
-    reachable: boolean;
+    on?: boolean;
+    bri?: number;
+    hue?: number;
+    sat?: number;
+    xy?: [number, number];
+    ct?: number;
+    alert?: string;
+    effect?: string;
+    colormode?: string;
+    reachable?: boolean;
 }
 
 export class Lights extends List<Light> {
@@ -72,6 +72,12 @@ export class Light extends EventEmitter {
         });
     }
 
+    setState(state: IHueState, cb: (err: IError, data: this) => void) {
+        this.hue.request(HttpVerb.PUT, `lights/${this.id}/state`, state, (err, data) => {
+            if(!err) extend(this.state, state);
+            cb(err, this);
+        });
+    }
         
 
 
