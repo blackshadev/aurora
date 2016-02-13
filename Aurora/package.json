@@ -1,0 +1,10 @@
+{
+  "name": "aurora",
+  "version": "1.0.0",
+  "description": "Aurora",
+  "main": "app.js",
+  "author": {
+    "name": "Vincent",
+    "email": "vinnie@script4web.nl"
+  }
+}
