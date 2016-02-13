@@ -106,8 +106,8 @@ export class Map<K, V> {
 }
 
 export class List<T> {
-    protected itemsArray: T[];
-    protected items: { [name: string]: T };
+    itemsArray: T[];
+    items: { [name: string]: T };
     get length(): number { return this.itemsArray.length; }
     protected keyField: string = "id";
 

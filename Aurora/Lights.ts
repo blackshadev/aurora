@@ -1,4 +1,7 @@
 ﻿import { List } from "./Collections";
+import { Hue } from "./Hue";
+import { HttpVerb, IError, IHueError } from "./common";
+import { EventEmitter } from "events";
 
 interface IHueLights {
     [id: string]: IHueLight
@@ -10,7 +13,7 @@ interface IHueLight {
     name: string;
     modelid: string;
     swversion: string;
-    pointsymbol: { [point: string]: string }
+    uniqueid: string;
 }
 
 interface IHueState {
@@ -27,28 +30,49 @@ interface IHueState {
 }
 
 export class Lights extends List<Light> {
-    static Create(lights: IHueLights): Lights {
+    static Create(hue: Hue, lights: IHueLights): Lights {
         var list = new Lights();
         for (var k in lights) {
-            list.add(new Light(parseInt(k), lights[k]));
+            list.add(new Light(hue, parseInt(k), lights[k]));
         }
 
         return list;
     }
 }
 
-export class Light {
+export class Light extends EventEmitter {
     id: number;
+    uniqueid: string;
     state: IHueState;
     name: string;
+    type: string;
+    hue: Hue;
 
-    constructor(id: number, data: IHueLight) {
+    constructor(hue: Hue, id: number, data: IHueLight) {
+        super();
+
+        this.hue = hue;
         this.id = id;
-        this.name = data.name;
-        this.state = data.state;
+
+        this.setData(data); 
     }
 
-    
+    protected setData(data: IHueLight) {
+        this.name = data.name;
+        this.state = data.state;
+        this.uniqueid = data.uniqueid;
+        this.type = data.type;
+    }
+
+
+    refresh(cb: (err: IError, data: this) => void): void {
+        this.hue.request(HttpVerb.GET, `lights/${this.id}`, undefined, (err, data) => {
+            if (!err) this.setData(<IHueLight>data);
+            cb(err, this);
+        });
+    }
+
+        
 
 
 }

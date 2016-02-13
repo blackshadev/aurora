@@ -27,10 +27,14 @@ describe("Aurora Hue API", () => {
 
     it("GetLights", (d) => {
         let l = hue.getLights((err, dat) => {
-            console.log(dat);
-            d()
+            if (err) assert.ok(!err, err.msg);
+            dat.itemsArray[0].refresh((err, l) => {
+                if (err)  assert.ok(!err, err.msg);
+                
+                d()
+            });
+            
         });
         
-
     });
 });
