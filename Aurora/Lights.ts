@@ -94,10 +94,10 @@ export class LightState implements IHueState {
 
 
     // Used a XY transformation matric from the Philips MyHue  source code
-    static xy2rgb(state: IHueState) : [number, number, number]{
-        const [x, y] = state.xy;
+    xy2rgb() : [number, number, number] {
+        const [x, y] = this.xy;
         const z = 1. - x - y;
-        const Y = state.bri / 255.;
+        const Y = this.bri / 255.;
         const X = (Y / y) * x;
         const Z = (Y / y) * z;
 
@@ -127,10 +127,9 @@ export class LightState implements IHueState {
     }
 
     // http://www.tannerhelland.com/4435/convert-temperature-rgb-algorithm-code/
-    static ct2rgb(state: IHueState) {
-        // ct is in MIRED https://en.wikipedia.org/wiki/Mired
-        // M = 1000000 / T
-        let ct = 1000000. / state.ct;
+    ct2rgb() : [number, number, number] {
+        // ct is in MIRED https://en.wikipedia.org/wiki/Mired M = 1000000 / T
+        let ct = 1000000. / this.ct;
         let temp = ct / 100.;
 
         let r, g, b;
@@ -162,10 +161,10 @@ export class LightState implements IHueState {
         return [minmax(r), minmax(g), minmax(b)];
     }
 
-    static hs2rgb(state: IHueState): [number, number, number] {
+    hs2rgb(): [number, number, number] {
         // Fit the hue to a scale from 0. to 360. 
-        const H = state.hue / 65535. * 360.;
-        const C = state.bri / 255. * state.sat / 255.;
+        const H = this.hue / 65535. * 360.;
+        const C = this.bri / 255. * this.sat / 255.;
         const X = C * (1 - Math.abs(((H / 60) % 2.) - 1.));
 
         function _rgb(H, C, X): [number, number, number] {
@@ -185,7 +184,7 @@ export class LightState implements IHueState {
         }
 
         let [R, G, B] = _rgb(H, C, X)
-        let m = state.bri / 255. - C
+        let m = this.bri / 255. - C
 
         //let res = (R + m, G + m, B + m)
         return [(R + m) * 255, (G + m) * 255, (B + m) * 255];
