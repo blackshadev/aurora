@@ -7,9 +7,13 @@ hue.on("connect", () => {
         dat.forEach((item: Light) => {
             console.log(item);
         });
-        dat.itemsArray[0].setState({ on: true }, (err, dat) => {
-            console.log(dat.state);
+        
+        hue.lights.on("statechanged", (src: Light, changes: { key: string, oldValue: any, newValue: any }[]) => {
+            console.log(`[StateChanged] on ${src.name}\n\t` + changes.map((el) => { return ` [${el.key}] was "${el.oldValue}" is "${el.newValue}" ` }).join("\n\t"));
         });
+
+        var l = dat.itemsArray[0];
+        l.setState({ on: true });
     });
 });
 hue.connect();

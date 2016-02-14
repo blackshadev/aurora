@@ -1,17 +1,19 @@
 ﻿import http = require("http");
-import events = require("events");
+import { EventEmitter } from "events";
 import fs = require("fs");
 import { Light, Lights } from "./Lights";
-import { HttpVerb, IError, IHueError } from "./common";
+import { HttpVerb, IError, IHueError, IEventEmitter } from "./common";
 
-export class Hue extends events.EventEmitter {
+export class Hue implements IEventEmitter {
     protected name: string;
     protected ip: string;
     protected userId: string;
-    protected lights: Lights;
+
+    protected events: EventEmitter;
+    lights: Lights;
 
     constructor(ip: string, name?: string) {
-        super();
+        this.events = new EventEmitter();
         this.ip = ip;
         this.name = name || "_hue";
         if(fs.existsSync(this.name + ".uid"))
@@ -97,4 +99,7 @@ export class Hue extends events.EventEmitter {
         req.end();
     }
 
+    on(evt: string, fn: EventListener) { this.events.addListener(evt, fn); }
+    off(evt: string, fn: EventListener) { this.events.removeListener(evt, fn); }
+    emit(evt: string, source: Object, ...args) { this.events.emit(evt, source, ...args); }
 }

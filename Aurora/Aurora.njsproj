@@ -42,6 +42,7 @@
     <TypeScriptCompile Include="ConfigManager.ts" />
     <TypeScriptCompile Include="Hue.ts" />
     <TypeScriptCompile Include="Lights.ts" />
+    <TypeScriptCompile Include="Scripts\typings\es6-shim\es6-shim.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\mocha\mocha.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\node\node.d.ts" />
     <TypeScriptCompile Include="test\hue.ts">
@@ -51,6 +52,7 @@
     </TypeScriptCompile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Scripts\typings\es6-shim\" />
     <Folder Include="Scripts\typings\mocha\" />
     <Folder Include="test\" />
     <Folder Include="Scripts\" />

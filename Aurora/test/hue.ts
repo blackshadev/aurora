@@ -9,7 +9,7 @@ describe("Aurora Hue API", () => {
     });
 
     it("Connect", (d) => {
-        hue.once("connect", () => {
+        hue.on("connect", () => {
             assert.ok((<any>hue).userId);
             d();
         });
